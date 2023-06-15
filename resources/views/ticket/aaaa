@@ -1,0 +1,88 @@
+
+<!-- -container 2- -->
+<form method="POST" action="{{ route('displayForm', $repairForm->formID)}}" enctype="multipart/form-data"
+    id="repairForm">
+
+    <div class="container2">
+        <table>
+            <tr>
+                <th class="name">PROBLEM TYPE</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-control" id="solution" name="solution" onchange="toggleDropdown()">
+                        @foreach($solution as $data)
+                        <option value="{{$data->id}}">{{$data->solutionName}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <!-- -container 3 -->
+    <div class="container3">
+        <table>
+            <tr>
+                <th class="name">SOLUTION</th>
+            </tr>
+            <tr>
+                <td>
+                    <select class="form-control" id="service" name="service" onchange="toggleDropdown()">
+                        @foreach($service as $data)
+                        <option value="{{$data->id}}">{{$data->serviceName}}</option>
+                        @endforeach
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <!-- -container 4 -->
+    <div class="container4">
+                    <table>
+                        <tr>
+                            <th class="name">PRODUCT</th>
+                        </tr>
+                        <tr>
+                            <td>
+                                <select class="form-control" id="productName" name="productName"
+                                    onchange="toggleDropdown()">
+                                    @foreach($product as $data)
+                                    <option value="{{$data->id}}">{{$data->productName}}</option>
+                                    @endforeach
+                                </select>
+                            </td>`
+                        </tr>
+                    </table>
+                </div>
+                <br> 
+    <!---container 5--->
+    <div class="container5">
+                    <table>
+                        <tr>
+                            <th class="name">DUE DATE</th>
+                        </tr>
+                        <tr>
+                            <td><input type="date" name="dueDate" class="form-control" id="txtDate" required>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <br>
+                <div>
+                    @if ($repairForm->status != 'Pending')
+                    <button type="submit" class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-right"
+                        id="updateStatus" style="float: right;">UPDATE</button>
+
+                    @else
+                    <input type="button" name="SubmitProposal"
+                        class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-right" id="updateStatus"
+                        style="float: right;" value="PROCEED">
+
+                    <input type="button" name="SubmitProposal"
+                        class="btn btn-primary btn-color btn-bg-color btn-sm col-xs-2 margin-right" id="updateStatus"
+                        style="float: right;" value="REJECT">
+                    @endif
+                </div>
+            </form>
