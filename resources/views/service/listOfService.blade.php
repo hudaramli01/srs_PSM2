@@ -78,11 +78,11 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Solution Name</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th width=5%>ID</th>
+                            <th width=40%>Solution Name</th>
+                            <th width=15%>Price</th>
+                            <th width=15%>Status</th>
+                            <th width=15%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -91,7 +91,15 @@
                             <td>{{$data->id}}</td>
                             <td>{{$data->serviceName}}</td>
                             <td>{{$data->price}}</td>
-                            <td>{{$data->status}}</td>
+                            @if ($data->status == 'available')
+                            <td style="color: green">
+                                {{$data->status}}
+                            </td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{$data->status}}
+                            </td>
+                            @endif
                             <td><a type="button" class="btn btn-danger" href="{{ route('deleteService', $data->id)}}">DELETE</a>
                             <a type="button" class="btn btn-info" href="{{ route('displayService', $data->id)}}">Info</a>
                             </td>

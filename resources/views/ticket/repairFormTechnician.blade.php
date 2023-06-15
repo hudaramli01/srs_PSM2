@@ -75,7 +75,7 @@
                         <table>
 
                             <tr>
-                                <th class="name1">CUSTOMER NAME</th>
+                                <th class="name1">Customer Name</th>
                                 <td>
                                     <input type="text" name="fullname" class="form-control" id="text" readonly
                                         value="{{ $repairForm->fullname }}">
@@ -84,23 +84,23 @@
 
 
                             <tr>
-                                <th class="name1">RECEIVED DATE</th>
+                                <th class="name1">Received Date</th>
                                 <td><input type="date" name="repairFormDate" class="form-control" id="txtDate"
                                         value="{{ $repairForm->receivedDate }}" readonly>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="name1">BRAND NAME</th>
+                                <th class="name1">Brand Name</th>
                                 <td><input type="text" name="brandName" class="form-control" placeholder="Brand Name"
                                         value="{{ $repairForm->brandName }}" readonly></td>
                             </tr>
                             <tr>
-                                <th class="name1">MODEL NAME</th>
+                                <th class="name1">Model Name</th>
                                 <td><input type="text" name="modelName" class="form-control" placeholder="Model Name"
                                         value="{{ $repairForm->modelName }}" readonly></td>
                             </tr>
                             <tr>
-                                <th class="name1">PASSWORD</th>
+                                <th class="name1">Password</th>
                                 <td><input type="text" name="password" class="form-control" placeholder="Password"
                                         value="{{ $repairForm->password }}" readonly></td>
                             </tr>
@@ -110,7 +110,7 @@
                     <div class="col-6">
                         <table>
                             <tr>
-                                <th class="name1" width="20%">PROBLEM DESCRIPTION</th>
+                                <th class="name1" width="20%">Problem Description</th>
                             </tr>
                             <tr>
                                 <td><textarea name="textarea" type="textarea" name="probDesc" class="form-control"
@@ -130,7 +130,7 @@
                 <div class="row">
 
                     <div class="form-group col-md-12">
-                        <label for="Problem">PROBLEM TYPE</label>
+                        <label for="Problem">Problem Type</label>
                         <select class="form-control" name="solution" id="solution">
                         <option value="" readonly>Please Select</option>
                             @foreach($solution as $data)
@@ -145,7 +145,7 @@
             <div class="container3">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="Problelm">SOLUTION</label>
+                        <label for="Problelm">Solution</label>
                         <select class="form-control" name="service" id="service">
                         <option value="">Please Select</option>
                             @foreach($service as $data)
@@ -160,7 +160,7 @@
             <div class="container4">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="Product">PRODUCT</label>
+                        <label for="Product">Product</label>
                         <select class="form-control" name="productName" id="productName">
                         <option value="">Please Select</option>
                             @foreach($product as $data)
@@ -175,14 +175,14 @@
             <div class="container5">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="Product">DUE DATE</label>
+                        <label for="Product">Due Date</label>
                         <input type="date" class="form-control" name="dueDate" id="txtDate" value="">
                     </div>
                 </div>
             </div>
             <br>
             <div>
-                <button type="submit" class="btn btn-info" id="updateStatus">UPDATE</button>
+                <button type="submit" class="btn btn-info" id="updateStatus">Update</button>
             </div>
         </form>
 

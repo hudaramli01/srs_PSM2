@@ -19,7 +19,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>PROBLEM TYPE</label>
+                            <label>Problem Type</label>
                             <input type="text" name="probName" class="form-control" placeholder="Problem Name"
                                 value="{{$solution->solutionName}}" readonly>
                         </div>
@@ -29,7 +29,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>PROBLEM DESCRIPTION</label>
+                            <label>Problem Description</label>
                             <textarea name="solutionDesc" class="form-control" placeholder="Description"
                                 readonly>{{$solution->solutionDesc}}</textarea>
                         </div>

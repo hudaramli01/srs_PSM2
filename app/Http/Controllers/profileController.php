@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 class profileController extends Controller
 {
     public function listProfile()
@@ -52,4 +54,15 @@ class profileController extends Controller
         // display message box in the same page
         return redirect()->back()->with('message', 'Product Updated Successfully');
     }
+    
+    public function updatePassword(Request $request)
+{
+    $user = Auth::user();
+
+    User::where('id', $user->id)->update([
+        'password' => Hash::make($request->password),
+    ]);
+
+    return back()->with('success', 'You have successfully changed your password.');
+}
 }

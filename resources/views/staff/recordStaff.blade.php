@@ -33,9 +33,9 @@ $(document).ready(function() {
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>ID</th>
-                    <th>Name</th>
-                    <th>User Type</th>
+                    <th width=5%>ID</th>
+                    <th width=50%>Name</th>
+                    <th width=20%>User Type</th>
                     <th width=25%>Action</th>
                 </tr>
             </thead>

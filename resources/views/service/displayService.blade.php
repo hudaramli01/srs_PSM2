@@ -19,7 +19,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>SOLUTION NAME</label>
+                                <label>Solution Name</label>
                                 <input type="text" name="serviceName" class="form-control" placeholder="Solution Name" value="{{$service->serviceName}}"
                                 readonly>
                             </div>
@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>DESCRIPTION</label>
+                                <label>Description</label>
                                 <textarea name="desc" class="form-control" placeholder="Description" readonly>{{$service->desc}}</textarea>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>STATUS</label>
+                                <label>Status</label>
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="status"
                                         id="flexRadioDefault1" value="available">
@@ -60,7 +60,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>PRICE</label>
+                                <label>Price</label>
                                 <input type="number" name="price" class="form-control" placeholder="Price" value="{{$service->price}}"
                                 readonly>
                             </div>

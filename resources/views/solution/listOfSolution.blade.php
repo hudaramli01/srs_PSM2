@@ -82,9 +82,9 @@ $(document).ready(function() {
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Problem Name</th>
-                            <th>Action</th>
+                            <th width=5%>ID</th>
+                            <th width=75%>Problem Name</th>
+                            <th width=20%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -92,8 +92,8 @@ $(document).ready(function() {
                         <tr>
                             <td>{{$data->id}}</td>
                             <td>{{$data->solutionName}}</td>
-                            <td><a type="button" class="btn btn-danger" href="{{ route('deleteSolution', $data->id)}}">DELETE</a>
-                            <a type="button" class="btn btn-info" href="{{ route('displaySolution', $data->id)}}">INFO</a>
+                            <td><a type="button" class="btn btn-danger" href="{{ route('deleteSolution', $data->id)}}">Delete</a>
+                            <a type="button" class="btn btn-info" href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
                         </tr>
                         @endforeach

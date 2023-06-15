@@ -82,12 +82,12 @@ $(document).ready(function() {
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Product Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Status</th>
-                            <th>Action</th>
+                            <th width=5%>ID</th>
+                            <th width=40%>Product Name</th>
+                            <th width=10%>Quantity</th>
+                            <th width=10%>Price</th>
+                            <th width=10%>Status</th>
+                            <th width=15%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -97,10 +97,18 @@ $(document).ready(function() {
                             <td>{{$data->productName}}</td>
                             <td>{{$data->quantity}}</td>
                             <td>{{$data->price}}</td>
-                            <td>{{$data->status}}</td>
+                            @if ($data->status == 'available')
+                            <td style="color: green">
+                                {{ $data->status }}
+                            </td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{ $data->status }}
+                            </td>
+                            @endif
                             <td>
                                 <a type="button" class="btn btn-danger"
-                                    href="{{ route('deleteProduct', $data->id)}}">DELETE</a>
+                                    href="{{ route('deleteProduct', $data->id)}}">Delete</a>
 
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displayProduct', $data->id)}}">Info</a>

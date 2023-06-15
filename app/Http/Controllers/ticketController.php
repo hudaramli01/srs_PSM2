@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\repairForm;
@@ -12,42 +12,45 @@ use App\Models\User;
 use App\Models\Customer;
 use Carbon\Carbon;
 
-class ticketController extends Controller
-{
-    public function newTicket()
+    class ticketController extends Controller
     {
-        $repairForm = DB::table('form')
-        ->join ('users', 'users.id', '=', 'form.managedBy')
-        ->select([
-            'users.id AS usersID',
-            'form.id AS formsID',
-            'users.*', 'form.*'
-        ])
+        public function newTicket(Request $request)
+        {
+            $category = Auth::user()->id;
+            $repairForm = DB::table('form')
+            ->join ('users', 'users.id', '=', 'form.managedBy')
+            
+            ->where('form.managedBy', '=', $category)
+            ->select([
+                'users.id AS usersID',
+                'form.id AS formsID',
+                'users.*', 'form.*'
+            ])
 
-        ->get();//looping
+
+            ->get();//looping
 
 
-        $remainDate = [];
+            $remainDate = [];
 
-        foreach ($repairForm as $remain) {
-            // Set the timezone to Kuala Lumpur
-            $kl_timezone = 'Asia/Kuala_Lumpur';
+            foreach ($repairForm as $remain) {
+                // Set the timezone to Kuala Lumpur
+                $kl_timezone = 'Asia/Kuala_Lumpur';
 
-            // Get today's date in Kuala Lumpur timezone
-            $today_date = Carbon::now($kl_timezone);
-            $expiredDate = Carbon::parse($remain->dueDate);
-            $diffInDays = $today_date->diffInDays($expiredDate);
-        
-            $remainDate[] = [
-                'diffInDays' => $diffInDays 
-            ];
+                // Get today's date in Kuala Lumpur timezone
+                $today_date = Carbon::now($kl_timezone);
+                $expiredDate = Carbon::parse($remain->dueDate);
+                $diffInDays = $today_date->diffInDays($expiredDate);
+            
+                $remainDate[] = [
+                    'diffInDays' => $diffInDays 
+                ];
+            }
+
+
+            return view('ticket.listOfTicket', compact('repairForm','remainDate','category'));
+
         }
-
-
-
-        return view('ticket.listOfTicket', compact('repairForm','remainDate'));
-
-    }
 
     public function NewForm($id)
     {
@@ -100,6 +103,7 @@ class ticketController extends Controller
         $repairForm->product = $request->input('productName');
         $repairForm->dueDate = $request->input('dueDate');
         $repairForm->status = 'Reviewed';
+       
     
         $repairForm->save();
     
@@ -200,6 +204,22 @@ public function displayEdit(Request $request, $id)
 
     return view('ticket.displayEditForm', compact('repairForm'));
 }
+
+public function updateRejectProceed(Request $request, $id)
+{
+    $repairForm = RepairForm::find($id);
+
+    $repairForm->status = $request->input('Status');
+
+   
+
+    $repairForm->update();
+
+
+
+    return redirect()->back()->with('message', 'Repair Form Updated Successfully');
+}
+
 
 
     public function deleteRepairForm(Request $request, $id)

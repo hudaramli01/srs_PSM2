@@ -65,7 +65,7 @@ $(document).ready(function() {
                             <a class="nav-link {{ request()->routeIs('listOfTicket') ? 'active' : '' }}"
                                 href="{{ route('listOfTicket') }}" role="tab" aria-selected="true">Rejected</a>
                         </li>
-                        
+
                     </ul>
                 </nav>
             </div>
@@ -93,17 +93,18 @@ $(document).ready(function() {
     <div class="card-body">
         <div class="overflow-auto" style="overflow:auto;">
             <div class="table-responsive">
-                @if( auth()->user()->category== "Technician" || auth()->user()->category== "Admin"|| auth()->user()->category== "Internship Student")
+                @if( auth()->user()->category== "Technician" || auth()->user()->category== "Admin"||
+                auth()->user()->category== "Internship Student")
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Received Date</th>
-                            <th>Due Date</th>
-                            <th>Time Remaining</th>
-                            <th>Status</th>
-                            <th>Model Name</th>
-                            <th>Action</th>
+                            <th width=5%>ID</th>
+                            <th width=15%>Received Date</th>
+                            <th width=15%>Due Date</th>
+                            <th width=5%>Time Remaining</th>
+                            <th width=10%>Status</th>
+                            <th width=30%>Managed By</th>
+                            <th width=20%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -149,7 +150,6 @@ $(document).ready(function() {
 
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displayForm', $data->id)}}">Info</a>
-
                             </td>
                         </tr>
                         @endforeach

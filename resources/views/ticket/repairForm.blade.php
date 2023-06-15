@@ -73,27 +73,27 @@
                     <div class="col-6">
                         <table>
                             <tr>
-                                <th class="name1">CUSTOMER NAME</th>
+                                <th class="name1">Customer Name</th>
                                 <td><input type="text" name="repairFormName" class="form-control"
                                         placeholder="Customer Name" value="{{$customer->fullname}}" readonly></td>
                             </tr>
                             <tr>
-                                <th class="name1">RECEIVED DATE</th>
+                                <th class="name1">Received Date</th>
                                 <td><input type="date" name="receivedDate" class="form-control" id="txtDate" required>
                                 </td>
                             </tr>
                             <tr>
-                                <th class="name1">BRAND NAME</th>
+                                <th class="name1">Brand Name</th>
                                 <td><input type="text" name="brandName" class="form-control" placeholder="Brand Name"
                                         required></td>
                             </tr>
                             <tr>
-                                <th class="name1">MODEL NAME</th>
+                                <th class="name1">Model Name</th>
                                 <td><input type="text" name="modelName" class="form-control" placeholder="Model Name"
                                         required></td>
                             </tr>
                             <tr>
-                                <th class="name1">PASSWORD</th>
+                                <th class="name1">Password</th>
                                 <td><input type="text" name="password" class="form-control" placeholder="Password"
                                         required></td>
                             </tr>
@@ -103,7 +103,7 @@
                     <div class="col-6">
                         <table>
                             <tr>
-                                <th class="name1" width="20%">PROBLEM DESCRIPTION</th>
+                                <th class="name1" width="20%">Problem Description</th>
                             </tr>
                             <tr>
                                 <td><textarea id="w3review" name="probDesc" rows="10" cols="50" type="textarea"
@@ -119,7 +119,7 @@
             <div class="container4">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="User">MANAGED BY</label>
+                        <label for="User">Managed By</label>
                         <select class="form-control" name="managedBy" id="managedBy" required>
                             <option value="">Please Select</option>
                             @foreach($repairForm as $manage)
@@ -134,7 +134,6 @@
             <div>
                 <input type="submit" name="submitRepairForm" class="btn btn-primary" id="repairForm"
                     style="float: right;">
-
             </div>
         </form>
     </div>
@@ -144,21 +143,4 @@
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<!-- <script>
-            function toggleDropdown() {
-                const solution = document.getElementById("solution");
-                const solutionlistlabel = document.getElementById("solutionlistlabel");
-                const solutionList = document.getElementById("solutionList");
-
-                if (solution.value === "solutionName") {
-                    solutionlistlabel.style.display = "block";
-                    solutionList.style.display = "block";
-                } else {
-                    solutionlistlabel.style.display = "none";
-                    solutionList.style.display = "none";
-                }
-            }
-            </script> -->
-
-
 @endsection

@@ -65,16 +65,14 @@
 
     <div class="card">
         <div class="card-body">
-            <form method="POST" action="" enctype="multipart/form-data" id="repairForm">
-                @csrf
-                @method('PUT')
+           
                 <div class="container1">
                     <div class="row">
                         <div class="col-6">
                             <table>
                                 @if ($repairForm)
                                 <tr>
-                                    <th class="name1">CUSTOMER NAME</th>
+                                    <th class="name1">Customer Name</th>
                                     <td>
                                         <input type="text" name="fullname" class="form-control" id="text" readonly
                                             value="{{ $repairForm->fullname }}">
@@ -88,23 +86,23 @@
 
 
                                 <tr>
-                                    <th class="name1">RECEIVED DATE</th>
+                                    <th class="name1">Received Date</th>
                                     <td><input type="date" name="repairFormDate" class="form-control" id="txtDate"
                                             value="{{$repairForm->receivedDate}}" readonly>
                                     </td>
                                 </tr>
                                 <tr>
-                                    <th class="name1">BRAND NAME</th>
+                                    <th class="name1">Brand Name</th>
                                     <td><input type="text" name="brandName" class="form-control"
                                             value="{{$repairForm->brandName}}" readonly></td>
                                 </tr>
                                 <tr>
-                                    <th class="name1">MODEL NAME</th>
+                                    <th class="name1">Model Name</th>
                                     <td><input type="text" name="modelName" class="form-control"
                                             value="{{$repairForm->modelName}}" readonly></td>
                                 </tr>
                                 <tr>
-                                    <th class="name1">PASSWORD</th>
+                                    <th class="name1">Password</th>
                                     <td><input type="text" name="password" class="form-control"
                                             value="{{$repairForm->password}}" readonly></td>
                                 </tr>
@@ -114,7 +112,7 @@
                         <div class="col-6">
                             <table>
                                 <tr>
-                                    <th class="name1" width="20%">PROBLEM DESCRIPTION</th>
+                                    <th class="name1" width="20%">Problem Description</th>
                                 </tr>
                                 <tr>
                                     <td><input id="w3review" name="w3review" rows="10" cols="50" type="textarea"
@@ -129,7 +127,7 @@
 
                 <div class="container2">
                     <tr>
-                        <th class="name">PROBLEM TYPE</th>
+                        <th class="name">Problem Type</th>
                     </tr>
                     <tr>
                         <td>
@@ -142,7 +140,7 @@
                 <!---container 3--->
                 <div class="container3">
                     <tr>
-                        <th class="name">SOLUTION</th>
+                        <th class="name">Solution</th>
                     </tr>
                     <tr>
                         <td>
@@ -157,7 +155,7 @@
                 <!---container 4--->
                 <div class="container4">
                     <tr>
-                        <th class="name">PRODUCT</th>
+                        <th class="name">Product</th>
                     </tr>
                     <tr>
                         <td>
@@ -172,7 +170,7 @@
                 <!---container 5--->
                 <div class="container5">
                     <tr>
-                        <th class="name">DUE DATE</th>
+                        <th class="name">Due Date</th>
                     </tr>
                     <tr>
                         <td>
@@ -182,32 +180,28 @@
                     </tr>
                 </div>
                 <br>
-      <!-- -container 4 -->
-      <div class="container4">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="Product">STATUS</label>
-                        <select class="form-control" name="productName" id="productName">
-                        <option value=>REJECTED</option>
-                            <option value=1>REJECTED</option>
-                            <option value=2>PROCEED</option>
-                        </select>
+                <!-- -container 4 -->
+                <form method="POST" action="{{ route('updateRejectProceed', $repairForm->formID) }}" enctype="multipart/form-data"
+                id="repairForm">
+                @csrf
+                @method('Post')
+                <div class="container4">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label for="Status">Status</label>
+                            <select class="form-control" name="Status" id="Status">
+                                <option value=>Please Select</option>
+                                <option value='Rejected'>Rejected</option>
+                                <option value='Proceed'>Proceed</option>
+                                <option value='Completed'>Completed</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <br>
-            <!-- -container 4 -->
-      <div class="container4">
-                <div class="row">
-                    <div class="form-group col-md-12">
-                        <label for="Product">MANAGED BY</label>
-                        <select class="form-control" name="productName" id="productName">
-                            <option value=></option>
-                        </select>
-                    </div>
+                <br>
+                <div>
+                    <button type="submit" class="btn btn-info" id="updateStatus">Update</button>
                 </div>
-            </div>
-            <br>
             </form>
         </div>
     </div>

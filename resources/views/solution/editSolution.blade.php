@@ -23,7 +23,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>PROBLEM NAME</label>
+                                <label>Problem Name</label>
                                 <input type="text" name="solutionName" class="form-control"
                                     value="{{$solution->solutionName}}" required>
                             </div>
@@ -33,7 +33,7 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>PROBLEM DESCRIPTION</label>
+                                <label>Problem Description</label>
 
                                 <textarea name="solutionDesc" class="form-control" placeholder="Description"
                                     required>{{$solution->solutionDesc}}</textarea>

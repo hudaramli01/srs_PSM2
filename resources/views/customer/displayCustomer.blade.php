@@ -101,7 +101,7 @@
                                 {{ $data->status }}
                             </td>
                             @elseif ($data->status == 'Proceed')
-                            <td style="color: brown">
+                            <td style="color: purple">
                                 {{ $data->status }}
                             </td>
                             @elseif ($data->status == 'Completed')

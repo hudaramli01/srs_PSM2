@@ -36,7 +36,7 @@ $(document).ready(function() {
                     <th>ID</th>
                     <th>Name</th>
                     <th>User Type</th>
-                    <th>Action</th>
+                    <th width=25%>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,7 +51,7 @@ $(document).ready(function() {
                             <a type="button" class="btn btn-danger" style="color:aliceblue" onclick="deleteItem(this)"
                                 data-id="{{ $data->id }}" data-name="{{ $data->name }}">Delete</a>
                             <a type="button" class="btn btn-info" href="{{route('displayStaff', $data->id)}}">Info</a>
-                            <a type="button" class="btn btn-dark" href="{{ route('getEmail', $data->id) }}">Email</a>
+                            <a type="button" class="btn btn-warning" href="{{ route('getEmail', $data->id) }}">Email</a>
                         </div>
                     </td>
                 </tr>

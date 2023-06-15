@@ -32,6 +32,7 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'load
 
 
 
+
 Route::get('/ListOfRepairForm', [App\Http\Controllers\ticketController::class, 'newTicket'])->name('listOfTicket');
 Route::get('/RepairForm/{id}', [App\Http\Controllers\ticketController::class, 'newForm'])->name('repairForm'); 
 Route::post('/displayRepairForm/{id}', [App\Http\Controllers\ticketController::class, 'insertForm'])->name('insertForm'); 
@@ -39,6 +40,8 @@ Route::get('/DisplayForm/{id}', [App\Http\Controllers\ticketController::class, '
 Route::delete('/deleteRepairForm/{id}', [App\Http\Controllers\ticketController::class, 'deleteRepairForm'])->name('deleteRepairForm');
 Route::post('/updateStatus/{id}', [App\Http\Controllers\ticketController::class, 'updateStatus'])->name('updateStatus');
 Route::get('/displayEdit/{id}', [App\Http\Controllers\ticketController::class, 'displayEdit'])->name('displayEdit');
+Route::post('/updateRejectProceed/{id}', [App\Http\Controllers\ticketController::class, 'updateRejectProceed'])->name('updateRejectProceed');
+
 
 Route::get('/RepairFormTechnician/{id}', [App\Http\Controllers\repairFormTechnician::class, 'listTechnicianForm'])->name('listTechnicianForm'); 
 
@@ -92,6 +95,8 @@ Route::get('/DeleteSolution/{id}', [App\Http\Controllers\solutionController::cla
 Route::get('/ListOfStaff', [App\Http\Controllers\profileController::class, 'listProfile'])->name('listOfStaff');
 Route::put('/UpdateProfile/{id}', [App\Http\Controllers\profileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/Profile/{id}', [App\Http\Controllers\profileController::class, 'Profile'])->name('Profile');
+Route::post('/updatePassword', [App\Http\Controllers\profileController::class, 'updatePassword'])->name('updatePassword');
+
 
 Route::get('/getEmail/{id}', [App\Http\Controllers\staffController::class, 'getEmail'])->name('getEmail');
 

@@ -46,7 +46,7 @@
                         <a class="nav-link {{ request()->routeIs('listOfTicket*') ? 'active' : '' }}"
                             href="{{ route('listOfTicket') }}">
                             <i class="material-icons" style="color:orange">description</i>
-                            <span> Repair Form</span>
+                            <span> E-Jobsheet</span>
                         </a>
                     </li>
                     <!-- <li class="nav-item">
@@ -77,7 +77,7 @@
                         <a class="nav-link {{ request()->routeIs('listOfTicket*') ? 'active' : '' }}"
                             href="{{ route('listOfTicket') }}">
                             <i class="material-icons" style="color:orange">description</i>
-                            <span>Repair Form</span>
+                            <span>E-Jobsheet</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -105,15 +105,8 @@
 
                     @if( auth()->user()->category== "Internship Student")
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
-                            <i class="material-icons" style="color:orange">work</i>
-                            <span>Ticket</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
+                        <a class="nav-link {{ request()->routeIs('listOfTicket*') ? 'active' : '' }}"
+                            href="{{ route('listOfTicket') }}">
                             <i class="material-icons" style="color:orange">work</i>
                             <span>E-Jobsheet</span>
                         </a>
@@ -123,6 +116,27 @@
                             href="{{ route('stdCalendar') }}">
                             <i class="material-calendar" style="color:orange">work</i>
                             <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
+                            href="{{ route('dashboard') }}">
+                            <i class="material-icons" style="color:orange">work</i>
+                            <span>Problem Type</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
+                            href="{{ route('dashboard') }}">
+                            <i class="material-icons" style="color:orange">work</i>
+                            <span>Solution</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
+                            href="{{ route('dashboard') }}">
+                            <i class="material-icons" style="color:orange">work</i>
+                            <span>Product</span>
                         </a>
                     </li>
                     @endif
@@ -160,7 +174,8 @@
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item text-success" href="{{ route('Profile', Auth::user()->id)}}">
                                     <i class="material-icons text-success">manage_accounts</i> Profile </a>
-                                <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
+                               
+                               <a class="dropdown-item text-danger" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     <i class="material-icons text-danger">&#xE879;</i> Logout </a>
 

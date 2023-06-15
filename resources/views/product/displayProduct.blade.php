@@ -18,7 +18,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>PRODUCT NAME</label>
+                            <label>Product Name</label>
                             <input type="text" name="productName" class="form-control" placeholder="Product Name"
                                 value="{{$product->productName}}" readonly>
                         </div>
@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>QUANTITY</label>
+                            <label>Quantity</label>
                             <input type="number" name="quantity" class="form-control" placeholder="Number"
                                 value="{{$product->quantity}}" readonly>
                         </div>
@@ -38,7 +38,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>PRICE</label>
+                            <label>Price</label>
                             <input type="number" name="price" class="form-control" placeholder="Price"
                                 value="{{$product->price}}" readonly>
                         </div>
@@ -58,7 +58,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>STATUS</label>
+                            <label>Status</label>
                             <div class="form-check">
                                 <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1"
                                     value="available" {{ $product->status === 'available' ? 'checked' : '' }} readonly>

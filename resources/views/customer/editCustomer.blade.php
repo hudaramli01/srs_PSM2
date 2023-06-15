@@ -23,13 +23,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>FULLNAME</label>
+                                <label>Fullname</label>
                                 <input type="text" name="fullname" class="form-control" placeholder="fullname"
                                     value="{{$customer->fullname}}" required>
                             </div>
                         </div>
                         <div class="col">
-                            <label>PHONE NUMBER</label>
+                            <label>Phone Number</label>
                             <input type="number" name="phoneNumber" class="form-control" placeholder="phone number"
                                 value="{{$customer->phoneNumber}}" required>
                         </div>
@@ -38,13 +38,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>EMAIL</label>
+                                <label>Email</label>
                                 <input type="email" name="Email" class="form-control" placeholder="Email"
                                     value="{{$customer->Email}}" required>
                             </div>
                         </div>
                         <div class="col">
-                            <label>ADDRESS</label>
+                            <label>Address</label>
                             <input type="text" name="address" class="form-control" placeholder="address"
                                 value="{{$customer->address}}" required>
                         </div>
@@ -53,8 +53,11 @@
                 </div>
 
             </div>
-            <input type="submit" name="submitProduct" class="btn btn-primary" id="product" style="float: right;">
 
+            <div>
+                <button type="submit" class="btn btn-info" id="updateStatus" style="float: right;">Update</button>
+            </div>
+            
         </form>
     </div>
 

@@ -174,10 +174,8 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content orange">
-                                <div class="circle-tile-description text-faded">Repair Form</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                                <div class="circle-tile-description text-faded">Total Staff</div>
+                                <div class="circle-tile-number text-faded ">{{$countStaff}}</div>
                             </div>
                         </div>
                     </div>
@@ -195,10 +193,8 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content blue">
-                                <div class="circle-tile-description text-faded">Repair Form</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                            <div class="circle-tile-description text-faded">Total E-Jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countRepairForm}}</div>
                             </div>
                         </div>
                     </div>
@@ -216,10 +212,8 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content yellow">
-                                <div class="circle-tile-description text-faded">Repair Form</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                            <div class="circle-tile-description text-faded">Total Customer</div>
+                                <div class="circle-tile-number text-faded ">{{$countCustomer}}</div>
                             </div>
                         </div>
                     </div>

@@ -81,11 +81,11 @@ $(document).ready(function() {
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>Customer Name</th>
-                            <th>Phone Number</th>
-                            <th>Address</th>
-                            <th>Action</th>
+                            <th width=5%>ID</th>
+                            <th width=20%>Customer Name</th>
+                            <th width=15%>Phone Number</th>
+                            <th width=45%>Address</th>
+                            <th width=15%>Action</th>
                         </tr>
                     </thead>
                     <tbody>

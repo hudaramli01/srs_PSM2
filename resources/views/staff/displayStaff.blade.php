@@ -40,13 +40,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>FULLNAME</label>
+                                <label>Fullname</label>
                                 <input type="text" name="name" class="form-control" placeholder="fullname"
                                     value="{{$profile->name}}" required>
                             </div>
                         </div>
                         <div class="col">
-                            <label>USERNAME</label>
+                            <label>Username</label>
                             <input type="text" name="userName" class="form-control" placeholder="username"
                                 value="{{$profile->userName}}" required>
                         </div>
@@ -57,13 +57,13 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>EMAIL ADDRESS</label>
+                                <label>Email Address</label>
                                 <input type="text" name="email" class="form-control" placeholder="email"
                                     value="{{$profile->email}}" required>
                             </div>
                         </div>
                         <div class="col">
-                            <label>PHONE NUMBER</label>
+                            <label>Phone Number</label>
                             <input type="number" name="phoneNumber" class="form-control" placeholder="PhoneNumber"
                                 value="{{$profile->phoneNumber}}" required>
                         </div>
