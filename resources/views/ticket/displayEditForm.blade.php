@@ -106,6 +106,11 @@
                                     <td><input type="text" name="password" class="form-control"
                                             value="{{$repairForm->password}}" readonly></td>
                                 </tr>
+                                <tr>
+                                <th class="name1">Managed By</th>
+                                <td><input type="text" name="password" class="form-control" placeholder="Password"
+                                        value="{{ $repairForm->managedBy }}" readonly></td>
+                            </tr>
                             </table>
 
                         </div>

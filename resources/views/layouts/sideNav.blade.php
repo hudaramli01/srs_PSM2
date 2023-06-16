@@ -49,12 +49,6 @@
                             <span> E-Jobsheet</span>
                         </a>
                     </li>
-                    <!-- <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('listOfSolution*') ? 'active' : '' }}" href="{{ route('listOfSolution') }}">
-                            <i class="material-icons" style="color:orange">report_problem</i>
-                            <span>Problem Type</span>
-                        </a>
-                    </li> -->
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('listOfSolution*') ? 'active' : '' }}"
                             href="{{ route('listOfSolution') }}">
@@ -74,8 +68,8 @@
 
                     @if( auth()->user()->category== "Admin")
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('listOfTicket*') ? 'active' : '' }}"
-                            href="{{ route('listOfTicket') }}">
+                        <a class="nav-link {{ request()->routeIs('newTicketAdmin*') ? 'active' : '' }}"
+                            href="{{ route('newTicketAdmin') }}">
                             <i class="material-icons" style="color:orange">description</i>
                             <span>E-Jobsheet</span>
                         </a>
@@ -98,7 +92,7 @@
                         <a class="nav-link {{ request()->routeIs('listOfProduct') ? 'active' : '' }}"
                             href="{{ route('listOfProduct') }}">
                             <i class="material-icons" style="color:orange">inventory_2</i>
-                            <span>Product</span>
+                            <span>Stock</span>
                         </a>
                     </li>
                     @endif
@@ -107,36 +101,36 @@
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('listOfTicket*') ? 'active' : '' }}"
                             href="{{ route('listOfTicket') }}">
-                            <i class="material-icons" style="color:orange">work</i>
+                            <i class="material-icons" style="color:orange">article</i>
                             <span>E-Jobsheet</span>
                         </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('stdCalendar*') ? 'active' : '' }}"
                             href="{{ route('stdCalendar') }}">
-                            <i class="material-calendar" style="color:orange">work</i>
+                            <i class="material-icons" style="color:orange">calendar_today</i>
                             <span>Calendar</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
-                            <i class="material-icons" style="color:orange">work</i>
+                        <a class="nav-link {{ request()->routeIs('listOfSolution*') ? 'active' : '' }}"
+                            href="{{ route('listOfSolution') }}">
+                            <i class="material-icons" style="color:orange">report_problem</i>
                             <span>Problem Type</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
-                            <i class="material-icons" style="color:orange">work</i>
+                        <a class="nav-link {{ request()->routeIs('listOfService*') ? 'active' : '' }}"
+                            href="{{ route('listOfService') }}">
+                            <i class="material-icons" style="color:orange">emoji_objects</i>
                             <span>Solution</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('dashboard*') ? 'active' : '' }}"
-                            href="{{ route('dashboard') }}">
-                            <i class="material-icons" style="color:orange">work</i>
-                            <span>Product</span>
+                        <a class="nav-link {{ request()->routeIs('listOfProduct*') ? 'active' : '' }}"
+                            href="{{ route('listOfProduct') }}">
+                            <i class="material-icons" style="color:orange">inventory_2</i>
+                            <span>Stock</span>
                         </a>
                     </li>
                     @endif

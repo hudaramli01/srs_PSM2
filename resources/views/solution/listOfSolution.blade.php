@@ -42,7 +42,7 @@ $(document).ready(function() {
     <div class="card-header pb-0">
         <div class="row">
             <div
-                class=" {{  auth()->user()->category== 'Technician' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfSolution') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
+                class=" {{  auth()->user()->category== 'Technician' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
                 <nav class="">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
@@ -53,6 +53,7 @@ $(document).ready(function() {
                     </ul>
                 </nav>
             </div>
+          
 
             <!-- if user == committee, then have add new repair form button  //routes(name file)-->
             @if( auth()->user()->category== "Technician")
@@ -94,6 +95,29 @@ $(document).ready(function() {
                             <td>{{$data->solutionName}}</td>
                             <td><a type="button" class="btn btn-danger" href="{{ route('deleteSolution', $data->id)}}">Delete</a>
                             <a type="button" class="btn btn-info" href="{{ route('displaySolution', $data->id)}}">Info</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    <tbody>
+                    </tbody>
+                </table>
+                @elseif( auth()->user()->category== "Internship Student")
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                        <tr>
+                            <th width=5%>ID</th>
+                            <th width=90%>Problem Name</th>
+                            <th width=5%>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($solutionList As $key=>$data)
+                        <tr>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->solutionName}}</td>
+                            <td>
+                           
+                                <a type="button" class="btn btn-info" href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
                         </tr>
                         @endforeach

@@ -14,6 +14,7 @@
 <div class="card">
     <div class="card-body">
         <!-- form add prob -->
+        @if( auth()->user()->category== "Technician")
         <div class="row">
             <div class="col">
                 <div class="row">
@@ -43,6 +44,36 @@
             href="{{ route('editSolution', $solution->id) }}">Edit</a>
 
         </form>
+        @elseif( auth()->user()->category== "Internship Student")
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Problem Type</label>
+                            <input type="text" name="probName" class="form-control" placeholder="Problem Name"
+                                value="{{$solution->solutionName}}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Problem Description</label>
+                            <textarea name="solutionDesc" class="form-control" placeholder="Description"
+                                readonly>{{$solution->solutionDesc}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+        </div>
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+
+        </form>
+        @endif
     </div>
 
 </div>

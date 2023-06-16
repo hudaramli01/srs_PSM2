@@ -29,11 +29,13 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'loadDashboard'])->name('dashboard');
+Route::get('/dashboard/technician', [DashboardController::class, 'technician'])->name('dashboard.technician');
 
 
 
 
 Route::get('/ListOfRepairForm', [App\Http\Controllers\ticketController::class, 'newTicket'])->name('listOfTicket');
+Route::get('/newTicketAdmin', [App\Http\Controllers\ticketController::class, 'newTicketAdmin'])->name('newTicketAdmin'); 
 Route::get('/RepairForm/{id}', [App\Http\Controllers\ticketController::class, 'newForm'])->name('repairForm'); 
 Route::post('/displayRepairForm/{id}', [App\Http\Controllers\ticketController::class, 'insertForm'])->name('insertForm'); 
 Route::get('/DisplayForm/{id}', [App\Http\Controllers\ticketController::class, 'displayForm'])->name('displayForm');

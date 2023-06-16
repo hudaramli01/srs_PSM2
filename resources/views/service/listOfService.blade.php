@@ -41,7 +41,7 @@
 <div class="card">
     <div class="card-header pb-0">
         <div class="row">
-            <div class=" {{  auth()->user()->category== 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
+            <div class=" {{  auth()->user()->category== 'Technician' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
                 <nav class="">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
@@ -108,6 +108,42 @@
                     <tbody>
                     </tbody>
                 </table>
+
+                @elseif( auth()->user()->category== "Internship Student")
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                        <tr>
+                            <th width=5%>ID</th>
+                            <th width=0%>Solution Name</th>
+                            <th width=15%>Price</th>
+                            <th width=15%>Status</th>
+                            <th width=5%>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($serviceList As $key=>$data)
+                        <tr>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->serviceName}}</td>
+                            <td>{{$data->price}}</td>
+                            @if ($data->status == 'available')
+                            <td style="color: green">
+                                {{$data->status}}
+                            </td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{$data->status}}
+                            </td>
+                            @endif
+                            <td>
+                            <a type="button" class="btn btn-info" href="{{ route('displayService', $data->id)}}">Info</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    <tbody>
+                    </tbody>
+                </table>
+
 
                 @endif
                 <!-- FOR TECHNICIAN TO VIEW RECORD REPAIR FORM LIST END -->

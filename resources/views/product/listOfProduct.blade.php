@@ -17,7 +17,7 @@ $(document).ready(function() {
         ],
         "language": {
             search: '<i class="fa fa-search" aria-hidden="true"></i>',
-            searchPlaceholder: 'Search By Product Name'
+            searchPlaceholder: 'Search By Stock  Name'
         }
     });
 
@@ -41,12 +41,12 @@ $(document).ready(function() {
 <div class="card">
     <div class="card-header pb-0">
         <div class="row">
-            <div class="{{ auth()->user()->category == 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfProduct') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
+            <div class="{{ auth()->user()->category == 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
                 <nav class="">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('listOfProduct') ? 'active' : '' }}"
-                                href="{{ route('listOfProduct') }}" role="tab" aria-selected="true">List Of Product</a>
+                                href="{{ route('listOfProduct') }}" role="tab" aria-selected="true">List Of Stock </a>
                         </li>
                     </ul>
                 </nav>
@@ -59,7 +59,7 @@ $(document).ready(function() {
             <div class="col-lg-2 col-md-2 col-sm-2" style="float: right;">
                 <a class="btn btn-primary" style="float: right; width:100%;" role="button"
                     href="{{ route('addProduct') }}">
-                    <i class="fas fa-plus"></i>&nbsp; Create Product</a>
+                    <i class="fas fa-plus"></i>&nbsp; Create Stock </a>
             </div>
             @else
             <div class="col-lg-2 col-md-2 col-sm-2" style="float: right;">
@@ -81,7 +81,7 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th width=5%>ID</th>
-                            <th width=40%>Product Name</th>
+                            <th width=40%>Stock  Name</th>
                             <th width=10%>Quantity</th>
                             <th width=10%>Price</th>
                             <th width=10%>Status</th>
@@ -103,6 +103,38 @@ $(document).ready(function() {
                             <td>
                                 <a type="button" class="btn btn-danger"
                                     href="{{ route('deleteProduct', $data->id)}}">Delete</a>
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayProduct', $data->id)}}">Info</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                @elseif(auth()->user()->category == "Internship Student")
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width=5%>ID</th>
+                            <th width=60%>Stock Name</th>
+                            <th width=10%>Quantity</th>
+                            <th width=10%>Price</th>
+                            <th width=10%>Status</th>
+                            <th width=5%>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($productList As $key=>$data)
+                        <tr>
+                            <td>{{$data->id}}</td>
+                            <td>{{$data->productName}}</td>
+                            <td>{{$data->quantity}}</td>
+                            <td>{{$data->price}}</td>
+                            @if ($data->quantity == 0)
+                            <td style="color: red">unavailable</td>
+                            @else
+                            <td style="color: green">{{$data->status}}</td>
+                            @endif
+                            <td>
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displayProduct', $data->id)}}">Info</a>
                             </td>

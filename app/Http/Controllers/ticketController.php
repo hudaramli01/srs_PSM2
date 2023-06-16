@@ -52,6 +52,38 @@ use Carbon\Carbon;
 
         }
 
+        public function newTicketAdmin(Request $request)
+        {
+            $category = Auth::user()->id;
+            $repairForm = DB::table('form')
+            ->join ('users', 'users.id', '=', 'form.managedBy')
+            ->select([
+                'users.id AS usersID',
+                'form.id AS formsID',
+                'users.*', 'form.*'
+            ])
+
+            ->get();//looping
+
+        $remainDate = [];
+
+        foreach ($repairForm as $remain) {
+            // Set the timezone to Kuala Lumpur
+            $kl_timezone = 'Asia/Kuala_Lumpur';
+
+            // Get today's date in Kuala Lumpur timezone
+            $today_date = Carbon::now($kl_timezone);
+            $expiredDate = Carbon::parse($remain->dueDate);
+            $diffInDays = $today_date->diffInDays($expiredDate);
+
+            $remainDate[] = [
+                'diffInDays' => $diffInDays
+            ];
+        }
+
+            return view('ticket.listOfTicket', compact('repairForm', 'remainDate', 'category'));
+        }
+       
     public function NewForm($id)
     {
             $customer = DB::table('customer')
@@ -183,6 +215,7 @@ use Carbon\Carbon;
                 'form.modelName',
                 'form.password',
                 'form.probDesc',
+                'form.managedBy',
                 'form.status as formStatus',
                 'customer.id as custID',
                 'customer.fullname',
@@ -223,6 +256,7 @@ public function displayEdit(Request $request, $id)
         'form.modelName',
         'form.password',
         'form.probDesc',
+        'form.managedBy',
         'form.status as formStatus',
         'customer.id as custID',
         'customer.fullname',

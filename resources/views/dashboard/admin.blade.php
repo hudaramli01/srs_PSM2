@@ -193,7 +193,7 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content blue">
-                            <div class="circle-tile-description text-faded">Total E-Jobsheet</div>
+                                <div class="circle-tile-description text-faded">Total E-Jobsheet</div>
                                 <div class="circle-tile-number text-faded ">{{$countRepairForm}}</div>
                             </div>
                         </div>
@@ -212,7 +212,7 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content yellow">
-                            <div class="circle-tile-description text-faded">Total Customer</div>
+                                <div class="circle-tile-description text-faded">Total Customer</div>
                                 <div class="circle-tile-number text-faded ">{{$countCustomer}}</div>
                             </div>
                         </div>
@@ -220,19 +220,53 @@
                 </div>
             </div>
         </div>
-
     </div>
-</div>
+<br>
+        <div class="row-sm-16">
+            <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+        </div>
+        
 
 
-<script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
-<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
+        <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+        <script type="text/javascript"
+            src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
+
+    function drawChart() {
+        // Get the current date in JavaScript
+        var currentDate = new Date().toLocaleDateString();
+
+        var data = google.visualization.arrayToDataTable([
+            ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
+            [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>, <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>]
+        ]);
+
+        var options = {
+            chart: {
+                title: 'Total of E-Jobshet and Status',
+                subtitle: 'Total of Job-Sheet untill ' + currentDate,
+            }
+        };
+
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
 </script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-@endsection
+        
+        @endsection

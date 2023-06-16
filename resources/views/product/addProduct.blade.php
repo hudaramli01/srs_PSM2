@@ -1,10 +1,10 @@
 @extends('layouts.sideNav')
 
 @section('content')
-<h4>Product</h4>
-<h6>Add New Product</h6>
+<h4>Stock</h4>
+<h6>Add New Stock</h6>
 
-<!-- message box if the new Product has been added -->
+<!-- message box if the new Stock has been added -->
 @if(session()->has('message'))
 <div class="alert alert-success">
     {{ session()->get('message') }}
@@ -13,7 +13,7 @@
 
 <div class="card">
     <div class="card-body">
-        <!-- form add Product -->
+        <!-- form add Stock -->
         <form method="POST" action="{{ route('insertProduct') }}" enctype="multipart/form-data" id="product" >
             @csrf
             <div class="row">
@@ -21,8 +21,8 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
-                                <label>Product Name</label>
-                                <input type="text" name="productName" class="form-control" placeholder="Product Name"
+                                <label>Stock Name</label>
+                                <input type="text" name="productName" class="form-control" placeholder="Stock Name"
                                     required>
                             </div>
                         </div>

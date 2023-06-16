@@ -1,8 +1,8 @@
 @extends('layouts.sideNav')
 
 @section('content')
-<h4>Product</h4>
-<h6>Display Product</h6>
+<h4>Stock</h4>
+<h6>Display Stock</h6>
 
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -18,7 +18,8 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>Product Name</label>
+                        @if(auth()->user()->category == "Admin")
+                            <label>Stock Name</label>
                             <input type="text" name="productName" class="form-control" placeholder="Product Name"
                                 value="{{$product->productName}}" readonly>
                         </div>
@@ -28,7 +29,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="col">
-                            <label>Product Description</label>
+                            <label>Stock Description</label>
                             <textarea name="desc" class="form-control" placeholder="Description" readonly>{{$product->productDesc}}</textarea>
                         </div>
                     </div>
@@ -96,6 +97,85 @@
         <a class="btn btn-primary" id="product" style="float: right;"
             href="{{ route('editProduct', $product->id) }}">Edit</a>
     </div>
+    @elseif(auth()->user()->category == "Internship Student")
+                            <label>Stock Name</label>
+                            <input type="text" name="productName" class="form-control" placeholder="Product Name"
+                                value="{{$product->productName}}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Stock Description</label>
+                            <textarea name="desc" class="form-control" placeholder="Description" readonly>{{$product->productDesc}}</textarea>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Quantity</label>
+                            <input type="number" name="quantity" class="form-control" placeholder="Number"
+                                value="{{$product->quantity}}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Price</label>
+                            <input type="number" name="price" class="form-control" placeholder="Price"
+                                value="{{$product->price}}" readonly>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <div class="text-center">
+                                <img src="/assets/{{$product->picture}}" width="200px" style="float: middle">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1"
+                                    value="available" {{ $product->status === 'available' ? 'checked' : '' }}
+                                    {{ $product->quantity == 0 ? 'disabled' : '' }} readonly>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Available
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault2"
+                                    value="unavailable" {{ $product->status === 'unavailable' ? 'checked' : '' }}
+                                    readonly>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Unavailable
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+
+        </div>
+        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+
+    </div>
+    @endif
 
 </div>
 <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>

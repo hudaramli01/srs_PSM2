@@ -23,8 +23,30 @@ class DashboardController extends Controller
 
             $countCustomer = DB::table('customer')->count();
 
+            $countPending = DB::table('form')
+            ->where('status', 'pending')
+            ->count();
 
-            return view('dashboard.admin', compact('countStaff', 'countRepairForm', 'countCustomer'));
+            $countReviewed = DB::table('form')
+            ->where('status', 'reviewed')
+            ->count();
+
+            $countRejected = DB::table('form')
+            ->where('status', 'rejected')
+            ->count();
+
+            $countProceed = DB::table('form')
+            ->where('status', 'proceed')
+            ->count();
+
+            $countCompleted = DB::table('form')
+            ->where('status', 'completed')
+            ->count();
+
+            
+
+
+            return view('dashboard.admin', compact('countStaff', 'countRepairForm', 'countCustomer', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted'));
         }
         if ($category == 'Technician') {
 
@@ -56,4 +78,6 @@ class DashboardController extends Controller
             return view('dashboard.internshipStudent');
         }
     }
+
+    
 }

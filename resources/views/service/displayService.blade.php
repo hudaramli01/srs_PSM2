@@ -14,6 +14,7 @@
 <div class="card">
     <div class="card-body">
         <!-- form add SERVICE -->
+        @if( auth()->user()->category== "Technician")
             <div class="row">
                 <div class="col">
                     <div class="row">
@@ -74,8 +75,68 @@
             </div>
             <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
             <a class="btn btn-primary" id="product" style="float: right;" href="{{ route('editService', $service->id) }}">Edit</a>
+            @elseif( auth()->user()->category== "Internship Student")
+            <div class="row">
+                <div class="col">
+                    <div class="row">
+                        <div class="col">
+                            <div class="col">
+                                <label>Solution Name</label>
+                                <input type="text" name="serviceName" class="form-control" placeholder="Solution Name" value="{{$service->serviceName}}"
+                                readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="col">
+                                <label>Description</label>
+                                <textarea name="desc" class="form-control" placeholder="Description" readonly>{{$service->desc}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                    <div class="col">
+                        <div class="col">
+                            <label>Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1"
+                                    value="available" {{ $service->status === 'available' ? 'checked' : '' }} readonly>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Available
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault2"
+                                    value="unavailable" {{ $service->status === 'unavailable' ? 'checked' : '' }}
+                                    readonly>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Unavailable
+                                </label>
+                            </div>
 
-        </form>
+                        </div>
+                    </div>
+                </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="col">
+                                <label>Price</label>
+                                <input type="number" name="price" class="form-control" placeholder="Price" value="{{$service->price}}"
+                                readonly>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+
+            </div>
+            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+
+        @endif
     </div>
 
 </div>
