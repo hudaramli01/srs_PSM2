@@ -170,7 +170,7 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading orange"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading orange"><i class="fa fa-user fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content orange">
@@ -208,7 +208,7 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading yellow"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading yellow"><i class="fa fa-users fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content yellow">

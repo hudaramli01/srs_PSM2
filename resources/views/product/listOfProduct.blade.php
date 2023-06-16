@@ -41,21 +41,19 @@ $(document).ready(function() {
 <div class="card">
     <div class="card-header pb-0">
         <div class="row">
-            <div
-                class=" {{  auth()->user()->category== 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfProduct') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
+            <div class="{{ auth()->user()->category == 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfProduct') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
                 <nav class="">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('listOfProduct') ? 'active' : '' }}"
-                                href="{{ route('listOfProduct') }}" role="tab" aria-selected="true">List Of
-                                Product</a>
+                                href="{{ route('listOfProduct') }}" role="tab" aria-selected="true">List Of Product</a>
                         </li>
                     </ul>
                 </nav>
             </div>
 
             <!-- if user == committee, then have add new repair form button  //routes(name file)-->
-            @if( auth()->user()->category== "Admin")
+            @if(auth()->user()->category == "Admin")
 
             @if(request()->routeIs('listOfProduct'))
             <div class="col-lg-2 col-md-2 col-sm-2" style="float: right;">
@@ -78,7 +76,7 @@ $(document).ready(function() {
     <div class="card-body">
         <div class="overflow-auto" style="overflow:auto;">
             <div class="table-responsive">
-                @if( auth()->user()->category== "Admin")
+                @if(auth()->user()->category == "Admin")
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
@@ -97,22 +95,16 @@ $(document).ready(function() {
                             <td>{{$data->productName}}</td>
                             <td>{{$data->quantity}}</td>
                             <td>{{$data->price}}</td>
-                            @if ($data->status == 'available')
-                            <td style="color: green">
-                                {{ $data->status }}
-                            </td>
-                            @elseif ($data->status == 'unavailable')
-                            <td style="color: red">
-                                {{ $data->status }}
-                            </td>
+                            @if ($data->quantity == 0)
+                            <td style="color: red">unavailable</td>
+                            @else
+                            <td style="color: green">{{$data->status}}</td>
                             @endif
                             <td>
                                 <a type="button" class="btn btn-danger"
                                     href="{{ route('deleteProduct', $data->id)}}">Delete</a>
-
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displayProduct', $data->id)}}">Info</a>
-                                    
                             </td>
                         </tr>
                         @endforeach
@@ -123,12 +115,10 @@ $(document).ready(function() {
             </div>
         </div>
     </div>
-
-
 </div>
 
 <script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
-<Script>
+<script>
 
 </script>
 @endsection

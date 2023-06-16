@@ -36,26 +36,28 @@
                     </div>
                     <br>
                     <div class="row">
+                    <div class="col">
                         <div class="col">
-                            <div class="col">
-                                <label>Status</label>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status"
-                                        id="flexRadioDefault1" value="available">
-                                    <label class="form-check-label" for="flexRadioDefault1">
-                                        Available
-                                    </label>
-                                </div>
-                                <div class="form-check">
-                                    <input class="form-check-input" type="radio" name="status"
-                                        id="flexRadioDefault2" value="unavailable">
-                                    <label class="form-check-label" for="flexRadioDefault2">
-                                        Unavailable
-                                    </label>
-                                </div>
+                            <label>Status</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault1"
+                                    value="available" {{ $service->status === 'available' ? 'checked' : '' }} readonly>
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Available
+                                </label>
                             </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="status" id="flexRadioDefault2"
+                                    value="unavailable" {{ $service->status === 'unavailable' ? 'checked' : '' }}
+                                    readonly>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    Unavailable
+                                </label>
+                            </div>
+
                         </div>
                     </div>
+                </div>
                     <br>
                     <div class="row">
                         <div class="col">
@@ -70,6 +72,7 @@
                 </div>
 
             </div>
+            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
             <a class="btn btn-primary" id="product" style="float: right;" href="{{ route('editService', $service->id) }}">Edit</a>
 
         </form>

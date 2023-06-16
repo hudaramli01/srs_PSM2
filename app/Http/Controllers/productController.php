@@ -22,6 +22,7 @@ class productController extends Controller
     public function insertProduct(Request $request)
     {
         $productName = $request->input('productName');
+        $productDesc = $request->input('productDesc');
         $quantity = $request->input('quantity');
         $price = $request->input('price');
         $picture = $request->file('picture');
@@ -37,6 +38,7 @@ class productController extends Controller
 
         $data = array(
             'productName' => $productName,
+            'productDesc' => $productDesc,
             'quantity' => $quantity,
             'price' => $price,
             'picture' => $filename,
@@ -44,7 +46,6 @@ class productController extends Controller
             
 
         );
-
         // insert query
         DB::table('product')->insert($data);
 
@@ -80,6 +81,7 @@ class productController extends Controller
         }
 
         $product->productName = $request->input('productName');
+        $product->productDesc = $request->input('productDesc');
         $product->quantity = $request->input('quantity');
         $product->price = $request->input('price');
         $product->picture = $request->file('picture');
@@ -91,9 +93,18 @@ class productController extends Controller
         $request->picture->move('assets', $filename);
 
         $product->picture = $filename;
+        
+         // Check if the quantity is 0 and set the status accordingly
+    if ($product->quantity == 0) {
+        $product->status = 'unavailable';
+    } else {
+        $product->status = $request->input('status');
+    }
 
         // upadate query in the database
         $product->update();
+
+
 
         // display message box in the same page
         return redirect()->back()->with('message', 'Product Updated Successfully');

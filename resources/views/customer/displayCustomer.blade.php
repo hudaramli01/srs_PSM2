@@ -50,6 +50,7 @@
             </div>
 
         </div>
+
         <a class="btn btn-primary" id="product" style="float: right;"
             href="{{ route('editCustomer', $customer->id) }}">Edit</a>
 
@@ -116,6 +117,7 @@
                             </td>
                             <td>{{$data->name }}</td>
                             <td>
+  
                                 <a type="button" class="btn btn-danger" style="color: aliceblue"
                                     onclick="deleteItem(this)" data-id="{{ $data->id }}">Delete</a>
 

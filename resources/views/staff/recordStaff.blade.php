@@ -62,70 +62,69 @@ $(document).ready(function() {
 
 
 <script>
-function deleteItem(e) {
-    let id = e.getAttribute('data-id');
-    let name = e.getAttribute('data-name');
+    function deleteItem(e) {
+        let id = e.getAttribute('data-id');
+        let name = e.getAttribute('data-name');
 
-    const swalWithBootstrapButtons = Swal.mixin({
-        customClass: {
-            confirmButton: 'btn btn-success ml-1',
-            cancelButton: 'btn btn-danger mr-1'
-        },
-        buttonsStyling: false
-    });
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success ml-1',
+                cancelButton: 'btn btn-danger mr-1'
+            },
+            buttonsStyling: false
+        });
 
-    swalWithBootstrapButtons.fire({
-        title: 'Are you sure?',
-        html: "Name: " + name + "<br> You won't be able to revert this!",
-        text: "",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, delete it!',
-        cancelButtonText: 'No, cancel!',
-        reverseButtons: true
-    }).then((result) => {
-        if (result.value) {
-            if (result.isConfirmed) {
+        swalWithBootstrapButtons.fire({
+            title: 'Are you sure?',
+            html: "Name: " + name + "<br> You won't be able to revert this!",
+            text: "",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                if (result.isConfirmed) {
 
-                $.ajax({
-                    type: 'DELETE',
-                    url: '{{url("/deleteUser")}}/' + id,
-                    data: {
-                        "_token": "{{ csrf_token() }}",
-                    },
-                    success: function(data) {
-                        if (data.success) {
-                            swalWithBootstrapButtons.fire(
-                                'Deleted!',
-                                'User account has been deleted.',
-                                "success"
-                            );
+                    $.ajax({
+                        type: 'POST',
+                        url: '/deleteUser/' + id,
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                            "_method": "DELETE" // Add this line to specify the delete method
+                        },
+                        success: function(data) {
+                            if (data.success) {
+                                swalWithBootstrapButtons.fire(
+                                    'Deleted!',
+                                    'User account has been deleted.',
+                                    "success"
+                                );
 
-                            $("#row" + id).remove(); // you can add name div to remove
+                                $("#row" + id).remove(); // Remove the row from the table
+                            }
                         }
+                    });
 
+                }
 
-                    }
-                });
-
+            } else if (
+                result.dismiss === Swal.DismissReason.cancel
+            ) {
+                // swalWithBootstrapButtons.fire(
+                //     'Cancelled',
+                //     'Your imaginary file is safe :)',
+                //     'error'
+                // );
             }
-
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            // swalWithBootstrapButtons.fire(
-            //     'Cancelled',
-            //     'Your imaginary file is safe :)',
-            //     'error'
-            // );
-        }
-    });
-
-}
+        });
+    }
 </script>
 
-<!-- Page level plugin JavaScript-->
+
 <script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
+
 <!-- for sweet alert fire-->
 <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
 

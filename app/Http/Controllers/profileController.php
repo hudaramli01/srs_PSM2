@@ -65,4 +65,13 @@ class profileController extends Controller
 
     return back()->with('success', 'You have successfully changed your password.');
 }
+
+public function deleteUser(Request $request, $id)
+{
+    if ($request->ajax()) {
+
+        User::where('id', '=', $id)->delete();
+        return response()->json(array('success' => true));
+    }
+}
 }

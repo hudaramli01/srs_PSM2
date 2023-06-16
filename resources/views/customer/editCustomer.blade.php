@@ -55,9 +55,9 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-info" id="updateStatus" style="float: right;">Update</button>
+            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+                <button type="submit" class="btn btn-primary" id="updateStatus" style="float: right;">Update</button>
             </div>
-            
         </form>
     </div>
 

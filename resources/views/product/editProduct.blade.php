@@ -33,6 +33,15 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
+                                <label>Product Description</label>
+                                <textarea name="productDesc" class="form-control" placeholder="Description" >{{$product->productDesc}}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="col">
                                 <label>Quantity</label>
                                 <input type="number" name="quantity" class="form-control" placeholder="Number"
                                     value="{{$product->quantity}}" required>
@@ -88,6 +97,7 @@
                 </div>
 
             </div>
+        
             <input type="submit" name="submitProduct" class="btn btn-primary" id="product" style="float: right;">
 
         </form>

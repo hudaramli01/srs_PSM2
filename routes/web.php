@@ -96,6 +96,7 @@ Route::get('/ListOfStaff', [App\Http\Controllers\profileController::class, 'list
 Route::put('/UpdateProfile/{id}', [App\Http\Controllers\profileController::class, 'updateProfile'])->name('updateProfile');
 Route::get('/Profile/{id}', [App\Http\Controllers\profileController::class, 'Profile'])->name('Profile');
 Route::post('/updatePassword', [App\Http\Controllers\profileController::class, 'updatePassword'])->name('updatePassword');
+Route::delete('/deleteUser/{id}', [App\Http\Controllers\profileController::class, 'deleteUser'])->name('deleteUser');
 
 
 Route::get('/getEmail/{id}', [App\Http\Controllers\staffController::class, 'getEmail'])->name('getEmail');

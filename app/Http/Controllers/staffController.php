@@ -100,8 +100,5 @@ public function listInternshipStudent(Request $request)
            
         }
 
-
-
-
-
+  
 }

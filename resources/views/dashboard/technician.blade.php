@@ -174,10 +174,8 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content orange">
-                                <div class="circle-tile-description text-faded">Number of Ticket</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                                <div class="circle-tile-description text-faded">Number of e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countRepairForm}}</div>
                             </div>
                         </div>
                     </div>
@@ -195,10 +193,8 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content red">
-                                <div class="circle-tile-description text-faded">pending ticket</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                                <div class="circle-tile-description text-faded">pending e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countPending}}</div>
                             </div>
                         </div>
                     </div>
@@ -212,14 +208,12 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading green"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading blue"><i class="fa fa-file-text fa-fw fa-3x"></i>
                                 </div>
                             </a>
-                            <div class="circle-tile-content green">
-                                <div class="circle-tile-description text-faded">complete ticket</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                            <div class="circle-tile-content blue">
+                                <div class="circle-tile-description text-faded">reviewed e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countReviewed}}</div>
                             </div>
                         </div>
                     </div>
@@ -236,14 +230,12 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading dark-blue"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading dark-gray"><i class="fa fa-file-text fa-fw fa-3x"></i>
                                 </div>
                             </a>
-                            <div class="circle-tile-content dark-blue">
-                                <div class="circle-tile-description text-faded">in progress ticket</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                            <div class="circle-tile-content dark-gray">
+                                <div class="circle-tile-description text-faded">rejected e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countRejected}}</div>
                             </div>
                         </div>
                     </div>
@@ -261,10 +253,27 @@
                                 </div>
                             </a>
                             <div class="circle-tile-content purple">
-                                <div class="circle-tile-description text-faded">complete ticket</div>
-                                <div class="circle-tile-number text-faded ">265</div>
-                                <a class="circle-tile-footer" href="#">More Info<i
-                                        class="fa fa-chevron-circle-right"></i></a>
+                                <div class="circle-tile-description text-faded">proceed e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countProceed}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class=" col-sm-12">
+                        <div class="circle-tile">
+                            <a href="#">
+                                <div class="circle-tile-heading green"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                </div>
+                            </a>
+                            <div class="circle-tile-content green">
+                                <div class="circle-tile-description text-faded">completed e-jobsheet</div>
+                                <div class="circle-tile-number text-faded ">{{$countCompleted}}</div>
                             </div>
                         </div>
                     </div>

@@ -17,7 +17,7 @@ $(document).ready(function() {
         ],
         "language": {
             search: '<i class="fa fa-search" aria-hidden="true"></i>',
-            searchPlaceholder: 'Search Repair Form'
+            searchPlaceholder: 'Search E-Jobsheet'
         }
     });
 
@@ -47,7 +47,7 @@ $(document).ready(function() {
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('listOfTicket') ? 'active' : '' }}"
-                                href="{{ route('listOfTicket') }}" role="tab" aria-selected="true">List Of Repair</a>
+                                href="{{ route('listOfTicket') }}" role="tab" aria-selected="true">E-Jobsheet</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('listOfTicket') ? 'active' : '' }}"
@@ -148,13 +148,28 @@ $(document).ready(function() {
                                 <a type="button" class="btn btn-danger" style="color:aliceblue"
                                     onclick="deleteItem(this)" data-id="{{ $data->id }}">Delete</a>
 
+                                    @if ($data->status == 'Pending')
                                 <a type="button" class="btn btn-info"
-                                    href="{{ route('displayForm', $data->id)}}">Info</a>
+                                    href="{{ route('displayForm', $data->id) }}">Info</a>
+                                @elseif ($data->status == 'Reviewed')
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                @elseif ($data->status == 'Rejected')
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                @elseif ($data->status == 'Proceed')
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                @elseif ($data->status == 'Completed')
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                @endif
                             </td>
                         </tr>
                         @endforeach
                     </tbody>
                 </table>
+
 
                 @endif
                 <!-- FOR TECHNICIAN TO VIEW RECORD REPAIR FORM LIST END -->
@@ -201,7 +216,7 @@ function deleteItem(e) {
                         if (data.success) {
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'Repair form has been deleted.',
+                                'E-Jobsheet has been deleted.',
                                 "success"
                             );
 

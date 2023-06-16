@@ -73,6 +73,7 @@
                 </div>
 
             </div>
+            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
             <input type="submit" name="submitService" class="btn btn-primary" id="service" style="float: right;">
 
         </form>

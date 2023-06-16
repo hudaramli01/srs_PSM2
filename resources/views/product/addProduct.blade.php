@@ -31,6 +31,17 @@
                     <div class="row">
                         <div class="col">
                             <div class="col">
+                                <label>Problem Description</label>
+                                <textarea type="text" name="productDesc" class="form-control"
+                                    placeholder="Description" required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <div class="row">
+                        <div class="col">
+                            <div class="col">
                                 <label>Quantity</label>
                                 <input type="number" name="quantity" class="form-control" placeholder="Number" required>
                             </div>
@@ -83,6 +94,7 @@
                 </div>
 
             </div>
+            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
             <input type="submit" name="submitProduct" class="btn btn-primary" id="product" style="float: right;">
 
         </form>

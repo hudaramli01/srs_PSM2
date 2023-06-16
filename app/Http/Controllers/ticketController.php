@@ -58,6 +58,8 @@ use Carbon\Carbon;
             ->where('id', $id)
             ->first();
             $repairForm = DB::table('users')
+            ->where('category', 'Technician')
+            ->orWhere('category', 'Internship Student')
             ->get();
 
         return view('ticket.repairForm', compact('customer','repairForm'));
@@ -111,10 +113,41 @@ use Carbon\Carbon;
         $solution = Solution::find($request->input('solution'));
         $service = Service::find($request->input('service'));
         $product = Product::find($request->input('productName'));
-    
 
+        
+         // Retrieve the selected product ID from the request
+        $selectedProductId = $request->input('productName');
+
+        // Find the selected product in the database
+        $product = Product::find($selectedProductId);
+
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Selected product not found');
+        }
     
-        return redirect()->back()->with('message', 'Repair Form Updated Successfully');
+        // Check if the selected product quantity is greater than 0
+        if ($product->quantity > 0) {
+            // Decrease the quantity by 1
+            $product->quantity -= 1;
+            $product->save();
+    
+            // Update the repair form with the selected product ID
+            $repairForm->product = $selectedProductId;
+            $repairForm->status = 'Reviewed';
+            $repairForm->save();
+    
+            // Update related tables (solution and service)
+            $solution = Solution::find($request->input('solution'));
+            $service = Service::find($request->input('service'));
+    
+            // Return a success message
+            return redirect()->back()->with('message', 'Repair Form Updated Successfully');
+        } else {
+            // Return an error message if the product is out of stock
+            return redirect()->back()->with('error', 'Selected product is out of stock');
+        }
+
     }
 
     public function rejectForm($id)
