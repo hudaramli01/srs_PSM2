@@ -54,9 +54,8 @@
                         <div class="col">
                             <div class="col">
                                 <label>Price</label>
-                                    <input type="text" name="price" class="form-control" placeholder="Price" required
-                                        pattern="^\d+(\.\d{2})?$" title="Enter a valid price format (e.g., 12.90)">
-                                </div>
+                                <input type="text" name="price" class="form-control" placeholder="Price" required
+                                    pattern="^\d+(\.\d{2})?$" title="Enter a valid price format (e.g., 12.90)">
                             </div>
                         </div>
                     </div>

@@ -109,8 +109,8 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th width=5%>ID</th>
-                            <th width=90%>Problem Name</th>
-                            <th width=5%>Action</th>
+                            <th width=80%>Problem Name</th>
+                            <th width=15%>Action</th>
                         </tr>
                     </thead>
                     <tbody>

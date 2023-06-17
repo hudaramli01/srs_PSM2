@@ -169,10 +169,10 @@
                         <select class="form-control" name="productName" id="productName" required>
                             <option value="" readonly>Please Select</option>
                             @foreach($product as $data)
-                            <option value="{{$data->id}}" @if($data->quantity === 0) disabled @endif>
-                                {{$data->productName}} @if($data->quantity === 0) (Out of Stock) @endif
-                            </option>
-                            @endforeach
+                    <option value="{{$data->id}}" @if($data->quantity === 0) disabled @endif>
+                        {{$data->productName}} @if($data->quantity === 0) (Out of Stock) @endif
+                    </option>
+                @endforeach
                         </select>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 
 class DashboardController extends Controller
 {
@@ -18,6 +19,10 @@ class DashboardController extends Controller
             ->orWhere('category', 'Internship Student')
             ->orWhere('category', 'Admin')
             ->count();
+
+            
+            $products = Product::all();
+
 
             $countRepairForm = DB::table('form')->count();
 
@@ -46,7 +51,7 @@ class DashboardController extends Controller
             
 
 
-            return view('dashboard.admin', compact('countStaff', 'countRepairForm', 'countCustomer', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted'));
+            return view('dashboard.admin', compact('countStaff', 'countRepairForm', 'countCustomer', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted','products'));
         }
         if ($category == 'Technician') {
 
@@ -72,7 +77,51 @@ class DashboardController extends Controller
             ->where('status', 'completed')
             ->count();
 
-            return view('dashboard.technician', compact('countRepairForm', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted'));
+            $currentUser = auth()->user(); // Assuming you are using Laravel's authentication
+
+            $techPending = DB::table('form')
+                ->where('status', 'pending')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $techReviewed = DB::table('form')
+                ->where('status', 'reviewed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $techRejected = DB::table('form')
+                ->where('status', 'rejected')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $techProceed = DB::table('form')
+                ->where('status', 'proceed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $techCompleted = DB::table('form')
+                ->where('status', 'completed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $techEjob = DB::table('form')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $countTechnician = DB::table('form')
+                ->where('managedBy', 'Technician')
+                ->count();
+    
+                $countIntStd = DB::table('form')
+                ->where('managedBy', 'Internship Student')
+                ->count();
+
+                $countPrbTyp = DB::table('solution')->count();
+
+                $countService = DB::table('service')->count();
+
+            return view('dashboard.technician', compact('countRepairForm', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted'
+            , 'currentUser', 'techPending', 'techReviewed', 'techRejected', 'techProceed', 'techCompleted','techEjob','countTechnician','countIntStd','countPrbTyp','countService'));
         }
         if ($category == 'Internship Student') {
 

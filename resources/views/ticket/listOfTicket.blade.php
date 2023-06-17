@@ -75,7 +75,6 @@ $(document).ready(function() {
     <div class="card-body">
         <div class="overflow-auto" style="overflow:auto;">
             <div class="table-responsive">
-
                 @if( auth()->user()->category== "Technician" ||
                 auth()->user()->category== "Internship Student")
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -96,9 +95,11 @@ $(document).ready(function() {
                             <td>{{$data->id}}</td>
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
-                            @if(isset($remainDate[$key]['diffInDays']))
-                            {{ ceil($remainDate[$key]['diffInDays']) }} day/days
-                            @endif
+                            <td>
+                                @if(isset($remainDate[$key]['diffInDays']))
+                                {{ ceil($remainDate[$key]['diffInDays']) }} day/days
+                                @endif
+                            </td>
                             @if ($data->status == 'Pending')
                             <td style="color: blue">
                                 {{$data->status}}
@@ -173,9 +174,9 @@ $(document).ready(function() {
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
                             <td>
-                            @if(isset($remainDate[$key]['diffInDays']))
-                            {{ ceil($remainDate[$key]['diffInDays']) }} day/days
-                            @endif
+                                @if(isset($remainDate[$key]['diffInDays']))
+                                {{ ceil($remainDate[$key]['diffInDays']) }} day/days
+                                @endif
                             </td>
                             @if ($data->status == 'Pending')
                             <td style="color: blue">

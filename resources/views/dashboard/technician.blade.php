@@ -161,8 +161,6 @@
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <div class="container bootstrap snippet">
-
-
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -189,12 +187,13 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading red"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading red"><i
+                                        class="fa fa-exclamation-triangle fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content red">
-                                <div class="circle-tile-description text-faded">pending e-jobsheet</div>
-                                <div class="circle-tile-number text-faded ">{{$countPending}}</div>
+                                <div class="circle-tile-description text-faded">Number of Problem Type</div>
+                                <div class="circle-tile-number text-faded ">{{$countPrbTyp}}</div>
                             </div>
                         </div>
                     </div>
@@ -208,12 +207,12 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading blue"><i class="fa fa-file-text fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading blue"><i class="fa fa-lightbulb-o fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content blue">
-                                <div class="circle-tile-description text-faded">reviewed e-jobsheet</div>
-                                <div class="circle-tile-number text-faded ">{{$countReviewed}}</div>
+                                <div class="circle-tile-description text-faded">Number of Solution</div>
+                                <div class="circle-tile-number text-faded ">{{$countService}}</div>
                             </div>
                         </div>
                     </div>
@@ -223,76 +222,108 @@
 
     </div>
     <br>
-    <div class="row">
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class=" col-sm-12">
-                        <div class="circle-tile ">
-                            <a href="#">
-                                <div class="circle-tile-heading dark-gray"><i class="fa fa-file-text fa-fw fa-3x"></i>
-                                </div>
-                            </a>
-                            <div class="circle-tile-content dark-gray">
-                                <div class="circle-tile-description text-faded">rejected e-jobsheet</div>
-                                <div class="circle-tile-number text-faded ">{{$countRejected}}</div>
-                            </div>
-                        </div>
-                    </div>
+
+
+</div>
+</br>
+<div class="row 2">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class=" col-sm-12">
+                    @foreach ($products as $product)
+                    <img src="{{ asset('storage/' . $product->picture) }}" alt="Product Image">
+                    @endforeach
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class=" col-sm-12">
-                        <div class="circle-tile">
-                            <a href="#">
-                                <div class="circle-tile-heading purple"><i class="fa fa-file-text fa-fw fa-3x"></i>
-                                </div>
-                            </a>
-                            <div class="circle-tile-content purple">
-                                <div class="circle-tile-description text-faded">proceed e-jobsheet</div>
-                                <div class="circle-tile-number text-faded ">{{$countProceed}}</div>
-                            </div>
-                        </div>
-                    </div>
+    </div>
+    <br>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <div class=" col-sm-12">
+                    <div id="columnchart_material" style="width: 400px; height: 300px;"></div>
                 </div>
             </div>
         </div>
-
-        <div class="col-sm-4">
-            <div class="card">
-                <div class="card-body">
-                    <div class=" col-sm-12">
-                        <div class="circle-tile">
-                            <a href="#">
-                                <div class="circle-tile-heading green"><i class="fa fa-file-text fa-fw fa-3x"></i>
-                                </div>
-                            </a>
-                            <div class="circle-tile-content green">
-                                <div class="circle-tile-description text-faded">completed e-jobsheet</div>
-                                <div class="circle-tile-number text-faded ">{{$countCompleted}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 </div>
 
 
+
+</div>
 <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
 <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
 <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {
+    'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var techPending = <?php echo $techPending; ?>;
+    var techReviewed = <?php echo $techReviewed; ?>;
+    var techRejected = <?php echo $techRejected; ?>;
+    var techProceed = <?php echo $techProceed; ?>;
+    var techCompleted = <?php echo $techCompleted; ?>;
+
+    var data = google.visualization.arrayToDataTable([
+        ['asasas', 'Hours per Day'],
+        ['Pending', techPending],
+        ['Reviewed', techReviewed],
+        ['Rejected', techRejected],
+        ['Proceed', techProceed],
+        ['Completed', techCompleted]
+    ]);
+
+    var options = {
+        title: 'My E-Jobsheet',
+        width: 450, // Specify the desired width in pixels
+        height: 300 // Specify the desired height in pixels
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+}
+</script>
+
+<script type="text/javascript">
+google.charts.load('current', {
+    'packages': ['bar']
+});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    // Get the current date in JavaScript
+    var currentDate = new Date().toLocaleDateString();
+
+    var data = google.visualization.arrayToDataTable([
+        ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
+        [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
+            <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
+        ]
+    ]);
+
+    var options = {
+        chart: {
+            title: 'Total of E-Jobshet and Status',
+            subtitle: 'Total of Job-Sheet untill ' + currentDate,
+        }
+    };
+
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+}
+</script>
+
+
 
 @endsection

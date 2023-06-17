@@ -161,8 +161,6 @@
 
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
 <div class="container bootstrap snippet">
-
-
     <div class="row">
         <div class="col-sm-4">
             <div class="card">
@@ -224,59 +222,69 @@
     <br>
 
     <div class="row">
-    <div class="col-sm-12">
-    <div class="card">
+        <div class="col-sm-8">
+            <div class="card">
                 <div class="card-body">
-        <div class="row-sm-16">
-            <div id="columnchart_material" style="width: 800px; height: 500px;"></div>
+                    <div class="row-sm-16">
+                        <div id="columnchart_material" style="width: 600px; height: 400px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row-sm-16">
+                        @foreach ($products as $product)
+                        <img src="{{ asset('storage/' . $product->picture) }}" alt="Product Image">
+                        @endforeach
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
+</div>
 
 
-
-    <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
-    <script type="text/javascript"
-        src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
-    </script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
+<script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
-    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-    google.charts.load('current', {
-        'packages': ['bar']
-    });
-    google.charts.setOnLoadCallback(drawChart);
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+google.charts.load('current', {
+    'packages': ['bar']
+});
+google.charts.setOnLoadCallback(drawChart);
 
-    function drawChart() {
-        // Get the current date in JavaScript
-        var currentDate = new Date().toLocaleDateString();
+function drawChart() {
+    // Get the current date in JavaScript
+    var currentDate = new Date().toLocaleDateString();
 
-        var data = google.visualization.arrayToDataTable([
-            ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
-            [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
-                <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
-            ]
-        ]);
+    var data = google.visualization.arrayToDataTable([
+        ['Stock Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
+        [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
+            <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
+        ]
+    ]);
 
-        var options = {
-            chart: {
-                title: 'Total of E-Jobshet and Status',
-                subtitle: 'Total of Job-Sheet untill ' + currentDate,
-            }
-        };
+    var options = {
+        chart: {
+            title: 'Total of E-Jobshet and Status',
+            subtitle: 'Total of Job-Sheet untill ' + currentDate,
+        }
+    };
 
-        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
-        chart.draw(data, google.charts.Bar.convertOptions(options));
-    }
-    </script>
+    chart.draw(data, google.charts.Bar.convertOptions(options));
+}
+</script>
 
 
-    @endsection
+@endsection
