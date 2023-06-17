@@ -94,8 +94,8 @@ $(document).ready(function() {
                             <td>{{$data->id}}</td>
                             <td>{{$data->solutionName}}</td>
                             <td>
-                                <a type="button" class="btn btn-danger"
-                                    href="{{ route('deleteProduct', $data->id)}}">Delete</a>
+                            <button class="btn btn-danger" type="button" onclick="deleteItem(this)"
+                                    data-id="{{ $data->id }}" data-name="{{ $data->solutionName }}">Delete</button>
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
@@ -162,43 +162,43 @@ function deleteItem(e) {
         cancelButtonText: 'No, cancel!',
         reverseButtons: true
     }).then((result) => {
+        console.log(result);
         if (result.value) {
             if (result.isConfirmed) {
-
                 $.ajax({
                     type: 'DELETE',
-                    url: '{{url("/deleteCustomer")}}/'  + id,
+                    url: '{{ url("/DeleteSolution") }}/' + id,
                     data: {
                         "_token": "{{ csrf_token() }}",
                     },
                     success: function(data) {
+                        console.log(data);
+
                         if (data.success) {
+                            console.log('Deletion successful.');
+
+                            // Remove the row from the table dynamically
+                            $("#row" + id).remove();
+
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'Problem Type has been deleted.',
+                                'User account has been deleted.',
                                 "success"
                             );
-
-                            $("#row" + id).remove(); // you can add name div to remove
+                        } else {
+                            console.log('Deletion failed.');
                         }
-
-
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('AJAX request error:', error);
                     }
                 });
-
             }
-
-        } else if (
-            result.dismiss === Swal.DismissReason.cancel
-        ) {
-            // swalWithBootstrapButtons.fire(
-            //     'Cancelled',
-            //     'Your imaginary file is safe :)',
-            //     'error'
-            // );
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            console.log('Deletion canceled.');
+            // Handle cancellation
         }
     });
-
 }
 </script>
 @endsection

@@ -187,8 +187,7 @@
                     <div class=" col-sm-12">
                         <div class="circle-tile ">
                             <a href="#">
-                                <div class="circle-tile-heading red"><i
-                                        class="fa fa-exclamation-triangle fa-fw fa-3x"></i>
+                                <div class="circle-tile-heading red"><i class="fa fa-exclamation-triangle fa-fw fa-3x"></i>
                                 </div>
                             </a>
                             <div class="circle-tile-content red">
@@ -222,33 +221,31 @@
 
     </div>
     <br>
+    
 
-
-</div>
-</br>
-<div class="row 2">
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <div class=" col-sm-12">
-                    @foreach ($products as $product)
-                    <img src="{{ asset('storage/' . $product->picture) }}" alt="Product Image">
-                    @endforeach
+    </div>
+    </br>
+    <div class="row 2">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class=" col-sm-12">
+                    <div id="piechart" style="width: 400px; height: 300px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <br>
-    <div class="col-sm-6">
-        <div class="card">
-            <div class="card-body">
-                <div class=" col-sm-12">
+        <br>
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class=" col-sm-12">
                     <div id="columnchart_material" style="width: 400px; height: 300px;"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 
 
@@ -295,34 +292,34 @@ function drawChart() {
 </script>
 
 <script type="text/javascript">
-google.charts.load('current', {
-    'packages': ['bar']
-});
-google.charts.setOnLoadCallback(drawChart);
+    google.charts.load('current', {
+        'packages': ['bar']
+    });
+    google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-    // Get the current date in JavaScript
-    var currentDate = new Date().toLocaleDateString();
+    function drawChart() {
+        // Get the current date in JavaScript
+        var currentDate = new Date().toLocaleDateString();
 
-    var data = google.visualization.arrayToDataTable([
-        ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
-        [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
-            <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
-        ]
-    ]);
+        var data = google.visualization.arrayToDataTable([
+            ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
+            [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
+                <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
+            ]
+        ]);
 
-    var options = {
-        chart: {
-            title: 'Total of E-Jobshet and Status',
-            subtitle: 'Total of Job-Sheet untill ' + currentDate,
-        }
-    };
+        var options = {
+            chart: {
+                title: 'Total of E-Jobshet and Status',
+                subtitle: 'Total of Job-Sheet untill ' + currentDate,
+            }
+        };
 
-    var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
+        var chart = new google.charts.Bar(document.getElementById('columnchart_material'));
 
-    chart.draw(data, google.charts.Bar.convertOptions(options));
-}
-</script>
+        chart.draw(data, google.charts.Bar.convertOptions(options));
+    }
+    </script>
 
 
 

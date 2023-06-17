@@ -30,12 +30,6 @@ $(document).ready(function() {
 });
 </script>
 
-<!-- to display the alert message if the record has been deleted -->
-@if(session()->has('message'))
-<div class="alert alert-success">
-    {{ session()->get('message') }}
-</div>
-@endif
 
 <div class="card">
     <div class="card-header pb-0">

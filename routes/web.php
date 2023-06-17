@@ -65,7 +65,7 @@ Route::post('/Service', [App\Http\Controllers\serviceController::class, 'insertS
 Route::get('/DisplayService/{id}', [App\Http\Controllers\serviceController::class, 'displayService'])->name('displayService');
 Route::get('/EditService/{id}', [App\Http\Controllers\serviceController::class, 'editService'])->name('editService');
 Route::put('/UpdateService/{id}', [App\Http\Controllers\serviceController::class, 'UpdateService'])->name('UpdateService');
-Route::get('/DeleteService/{id}', [App\Http\Controllers\serviceController::class, 'deleteService'])->name('deleteService');
+Route::delete('/DeleteService/{id}', [App\Http\Controllers\serviceController::class, 'deleteService'])->name('deleteService');
 
 
 
@@ -93,7 +93,7 @@ Route::post('/Solution', [App\Http\Controllers\solutionController::class, 'inser
 Route::get('/DisplaySolution/{id}', [App\Http\Controllers\solutionController::class, 'displaySolution'])->name('displaySolution');
 Route::get('/EditSolution/{id}', [App\Http\Controllers\solutionController::class, 'editSolution'])->name('editSolution');
 Route::put('/UpdateSolution/{id}', [App\Http\Controllers\solutionController::class, 'UpdateSolution'])->name('UpdateSolution');
-Route::get('/DeleteSolution/{id}', [App\Http\Controllers\solutionController::class, 'deleteSolution'])->name('deleteSolution');
+Route::delete('/DeleteSolution/{id}', [App\Http\Controllers\solutionController::class, 'deleteSolution'])->name('deleteSolution');
 
 Route::get('/ListOfStaff', [App\Http\Controllers\profileController::class, 'listProfile'])->name('listOfStaff');
 Route::put('/UpdateProfile/{id}', [App\Http\Controllers\profileController::class, 'updateProfile'])->name('updateProfile');

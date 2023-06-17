@@ -66,7 +66,7 @@ class solutionController extends Controller
         // display message box in the same page
         return redirect()->back()->with('message', 'Problem Updated Successfully');
     }
-    public function deleteSolution(Request $request, $id)
+    public function DeleteService(Request $request, $id)
     {
         if ($request->ajax()) {
 
