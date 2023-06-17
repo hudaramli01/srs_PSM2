@@ -112,7 +112,7 @@
                             @endif
                             <td>
                                 @if (isset($remainDate[$key]))
-                                {{ $remainDate[$key]['diffInDays'] }} day/days
+                                {{ $remainDate[$key]['diffInDays'] }} 
                                 @endif
                             </td>
                             <td>{{$data->name }}</td>

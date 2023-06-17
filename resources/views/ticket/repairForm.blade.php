@@ -71,7 +71,7 @@
             <div class="container1">
                 <div class="row">
                     <div class="col-6">
-                        <table>
+                        <table width="100%">
                             <tr>
                                 <th class="name1">Customer Name</th>
                                 <td><input type="text" name="repairFormName" class="form-control"
@@ -119,9 +119,9 @@
             <div class="container4">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="User">Managed By</label>
+                        <label for="User">Assigned To</label>
                         <select class="form-control" name="managedBy" id="managedBy" required>
-                            <option value="">Please Select</option>
+                            <option value="" readonly>Please Select</option>
                             @foreach($repairForm as $manage)
                             <option value="{{$manage->id}}">{{$manage->name}}</option>
                             @endforeach

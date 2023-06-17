@@ -113,19 +113,10 @@ class productController extends Controller
     //function delete proposal from database for committee view 
     public function deleteProduct(Request $request, $id)
     {
-        // find proposal id
-        $product = Product::find($id);
+        if ($request->ajax()) {
 
-        // unlink the file in the assets folder
-        $path = public_path() . '/assets/' . $product->picture;
-        if (file_exists($path)) {
-            unlink($path);
+            Product::where('id', '=', $id)->delete();
+            return response()->json(array('success' => true));
         }
-
-        // delete the record from the database
-        DB::delete('DELETE FROM product WHERE id = ?', [$id]);
-
-        echo "Record deleted successfully.<br/>";
-        return redirect()->back()->with('message', 'Product Deleted Successfully');
     }
 }

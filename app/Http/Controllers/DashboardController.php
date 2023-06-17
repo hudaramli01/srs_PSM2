@@ -75,7 +75,40 @@ class DashboardController extends Controller
             return view('dashboard.technician', compact('countRepairForm', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted'));
         }
         if ($category == 'Internship Student') {
-            return view('dashboard.internshipStudent');
+
+            $currentUser = auth()->user(); // Assuming you are using Laravel's authentication
+
+            $stdPending = DB::table('form')
+                ->where('status', 'pending')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $stdReviewed = DB::table('form')
+                ->where('status', 'reviewed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $stdRejected = DB::table('form')
+                ->where('status', 'rejected')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $stdProceed = DB::table('form')
+                ->where('status', 'proceed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $stdCompleted = DB::table('form')
+                ->where('status', 'completed')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+
+                $stdEjob = DB::table('form')
+                ->where('managedBy', $currentUser->id)
+                ->count();
+            
+            return view('dashboard.internshipStudent', compact('stdPending','stdReviewed','stdRejected','stdProceed','stdCompleted','stdEjob'));
+            
         }
     }
 

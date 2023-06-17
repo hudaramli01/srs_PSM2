@@ -68,13 +68,10 @@ class solutionController extends Controller
     }
     public function deleteSolution(Request $request, $id)
     {
-        // find proposal id
-        $solution = Solution::find($id);
+        if ($request->ajax()) {
 
-        // delete the record from the database
-        DB::delete('DELETE FROM solution WHERE id = ?', [$id]);
-
-        echo "Record deleted successfully.<br/>";
-        return redirect()->back()->with('message', 'Problem Deleted Successfully');
+            Solution::where('id', '=', $id)->delete();
+            return response()->json(array('success' => true));
+        }
     }
 }

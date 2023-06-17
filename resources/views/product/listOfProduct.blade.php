@@ -2,11 +2,6 @@
 
 @section('content')
 
-<script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
-<script src="{{ asset('frontend') }}/js/dataTables.bootstrap4.js"></script>
-<script src="//code.jquery.com/jquery-1.12.3.js"></script>
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
 <script>
 // to search the REPAIR FORM 
@@ -31,6 +26,7 @@ $(document).ready(function() {
 });
 </script>
 
+
 <!-- to display the alert message if the record has been deleted -->
 @if(session()->has('message'))
 <div class="alert alert-success">
@@ -41,7 +37,8 @@ $(document).ready(function() {
 <div class="card">
     <div class="card-header pb-0">
         <div class="row">
-            <div class="{{ auth()->user()->category == 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
+            <div
+                class="{{ auth()->user()->category == 'Admin' ? 'col-lg-10 col-md-10 col-sm-10' : (request()->routeIs('listOfService') ? 'col-lg-10 col-md-10 col-sm-10' : 'col-lg-12 col-md-12 col-sm-12') }}">
                 <nav class="">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item">
@@ -81,7 +78,7 @@ $(document).ready(function() {
                     <thead>
                         <tr>
                             <th width=5%>ID</th>
-                            <th width=40%>Stock  Name</th>
+                            <th width=40%>Stock Name</th>
                             <th width=10%>Quantity</th>
                             <th width=10%>Price</th>
                             <th width=10%>Status</th>
@@ -94,15 +91,21 @@ $(document).ready(function() {
                             <td>{{$data->id}}</td>
                             <td>{{$data->productName}}</td>
                             <td>{{$data->quantity}}</td>
-                            <td>{{$data->price}}</td>
+                            <td>RM {{ number_format($data->price, 2) }}</td>
                             @if ($data->quantity == 0)
                             <td style="color: red">unavailable</td>
-                            @else
-                            <td style="color: green">{{$data->status}}</td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{$data->status}}
+                            </td>
+                            @elseif ($data->status == 'available')
+                            <td style="color: green">
+                                {{$data->status}}
+                            </td>
                             @endif
                             <td>
-                                <a type="button" class="btn btn-danger"
-                                    href="{{ route('deleteProduct', $data->id)}}">Delete</a>
+                                <button class="btn btn-danger" type="button" onclick="deleteItem(this)"
+                                    data-id="{{ $data->id }}" data-name="{{ $data->productName }}">Delete</button>
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displayProduct', $data->id)}}">Info</a>
                             </td>
@@ -128,7 +131,7 @@ $(document).ready(function() {
                             <td>{{$data->id}}</td>
                             <td>{{$data->productName}}</td>
                             <td>{{$data->quantity}}</td>
-                            <td>{{$data->price}}</td>
+                            <td>RM {{ number_format($data->price, 2) }}</td>
                             @if ($data->quantity == 0)
                             <td style="color: red">unavailable</td>
                             @else
@@ -150,7 +153,76 @@ $(document).ready(function() {
 </div>
 
 <script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
-<script>
+<script src="{{ asset('frontend') }}/js/dataTables.bootstrap4.js"></script>
+<script src="//code.jquery.com/jquery-1.12.3.js"></script>
+<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
 
+<script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
+<!-- JavaScript code -->
+<script>
+function deleteItem(e) {
+    let id = e.getAttribute('data-id');
+    let name = e.getAttribute('data-name');
+
+    const swalWithBootstrapButtons = Swal.mixin({
+        customClass: {
+            confirmButton: 'btn btn-success ml-1',
+            cancelButton: 'btn btn-danger mr-1'
+        },
+        buttonsStyling: false
+    });
+
+    swalWithBootstrapButtons.fire({
+        title: 'Are you sure?',
+        html: "Name: " + name + "<br> You won't be able to revert this!",
+        text: "",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Yes, delete it!',
+        cancelButtonText: 'No, cancel!',
+        reverseButtons: true
+    }).then((result) => {
+        console.log(result);
+        if (result.value) {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'DELETE',
+                    url: '{{ url("/DeleteProduct") }}/' + id,
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    success: function(data) {
+                        console.log(data);
+
+                        if (data.success) {
+                            console.log('Deletion successful.');
+
+                            // Remove the row from the table dynamically
+                            $("#row" + id).remove();
+
+                            swalWithBootstrapButtons.fire(
+                                'Deleted!',
+                                'User account has been deleted.',
+                                "success"
+                            );
+                        } else {
+                            console.log('Deletion failed.');
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.log('AJAX request error:', error);
+                    }
+                });
+            }
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            console.log('Deletion canceled.');
+            // Handle cancellation
+        }
+    });
+}
 </script>
+
+
+
 @endsection

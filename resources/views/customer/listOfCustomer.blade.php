@@ -84,14 +84,14 @@ $(document).ready(function() {
                             <th width=5%>ID</th>
                             <th width=20%>Customer Name</th>
                             <th width=15%>Phone Number</th>
-                            <th width=45%>Address</th>
-                            <th width=15%>Action</th>
+                            <th width=42%>Address</th>
+                            <th width=18%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($customerList As $key=>$data)
                         <tr id="row{{$data->id}}">
-                            
+
                             <td>{{$data->id}}</td>
                             <td>{{$data->fullname}}</td>
                             <td>{{$data->phoneNumber}}</td>
@@ -179,7 +179,5 @@ function deleteItem(e) {
 </script>
 
 <script src="{{ asset('frontend') }}/js/jquery.dataTables.js"></script>
-<Script>
 
-</script>
 @endsection

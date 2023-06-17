@@ -69,7 +69,7 @@
                 <div class="container1">
                     <div class="row">
                         <div class="col-6">
-                            <table>
+                            <table width="100%">
                                 @if ($repairForm)
                                 <tr>
                                     <th class="name1">Customer Name</th>
@@ -83,7 +83,6 @@
                                     <td colspan="2">No data available</td>
                                 </tr>
                                 @endif
-
 
                                 <tr>
                                     <th class="name1">Received Date</th>
@@ -109,7 +108,7 @@
                                 <tr>
                                 <th class="name1">Managed By</th>
                                 <td><input type="text" name="password" class="form-control" placeholder="Password"
-                                        value="{{ $repairForm->managedBy }}" readonly></td>
+                                        value="{{ $repairForm->name }}" readonly></td>
                             </tr>
                             </table>
 
@@ -160,7 +159,7 @@
                 <!---container 4--->
                 <div class="container4">
                     <tr>
-                        <th class="name">Product</th>
+                        <th class="name">Stock</th>
                     </tr>
                     <tr>
                         <td>

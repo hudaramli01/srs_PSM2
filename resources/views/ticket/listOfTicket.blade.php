@@ -96,11 +96,9 @@ $(document).ready(function() {
                             <td>{{$data->id}}</td>
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
-                            <td>
-                                @if(isset($remainDate[$key]))
-                                {{ $remainDate[$key]['diffInDays'] }} day/days
-                                @endif
-                            </td>
+                            @if(isset($remainDate[$key]['diffInDays']))
+                            {{ ceil($remainDate[$key]['diffInDays']) }} day/days
+                            @endif
                             @if ($data->status == 'Pending')
                             <td style="color: blue">
                                 {{$data->status}}
@@ -110,7 +108,7 @@ $(document).ready(function() {
                                 {{$data->status}}
                             </td>
                             @elseif ($data->status == 'Proceed')
-                            <td style="color: grey">
+                            <td style="color: purple">
                                 {{$data->status}}
                             </td>
                             @elseif ($data->status == 'Rejected')
@@ -175,9 +173,9 @@ $(document).ready(function() {
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
                             <td>
-                                @if(isset($remainDate[$key]))
-                                {{ $remainDate[$key]['diffInDays'] }} day/days
-                                @endif
+                            @if(isset($remainDate[$key]['diffInDays']))
+                            {{ ceil($remainDate[$key]['diffInDays']) }} day/days
+                            @endif
                             </td>
                             @if ($data->status == 'Pending')
                             <td style="color: blue">
@@ -188,7 +186,7 @@ $(document).ready(function() {
                                 {{$data->status}}
                             </td>
                             @elseif ($data->status == 'Proceed')
-                            <td style="color: grey">
+                            <td style="color: purple">
                                 {{$data->status}}
                             </td>
                             @elseif ($data->status == 'Rejected')

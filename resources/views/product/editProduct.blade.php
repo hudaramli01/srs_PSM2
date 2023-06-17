@@ -34,7 +34,8 @@
                         <div class="col">
                             <div class="col">
                                 <label>Stock Description</label>
-                                <textarea name="productDesc" class="form-control" placeholder="Description" >{{$product->productDesc}}</textarea>
+                                <textarea name="productDesc" class="form-control"
+                                    placeholder="Description">{{$product->productDesc}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -53,8 +54,9 @@
                         <div class="col">
                             <div class="col">
                                 <label>Price</label>
-                                <input type="number" name="price" class="form-control" placeholder="Price"
-                                    value="{{$product->price}}" required>
+                                    <input type="text" name="price" class="form-control" placeholder="Price" required
+                                        pattern="^\d+(\.\d{2})?$" title="Enter a valid price format (e.g., 12.90)">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -64,7 +66,7 @@
                             <div class="col">
                                 <div class="text-center">
                                     <input type="file" name="picture" class="form-control" id="image" accept="image/*"
-                                        onchange="loadImage(this)" value="{{$product->picture}}" required>
+                                        onchange="loadImage(this)" value="{{$product->picture}}">
                                     <br>
                                     <img src="/assets/{{$product->picture}}" width="200px" style="float: middle">
                                 </div>
@@ -97,7 +99,7 @@
                 </div>
 
             </div>
-        
+
             <input type="submit" name="submitProduct" class="btn btn-primary" id="product" style="float: right;">
 
         </form>

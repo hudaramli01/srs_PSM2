@@ -60,19 +60,19 @@ class customerController extends Controller
         
         $remainDate = [];
 
-        foreach ($repairForm as $remain) {
-            // Set the timezone to Kuala Lumpur
-            $kl_timezone = 'Asia/Kuala_Lumpur';
-
-            // Get today's date in Kuala Lumpur timezone
-            $today_date = Carbon::now($kl_timezone);
-            $expiredDate = Carbon::parse($remain->dueDate);
-            $diffInDays = $today_date->diffInDays($expiredDate);
-        
-            $remainDate[] = [
-                'diffInDays' => $diffInDays 
-            ];
-        }
+            foreach ($repairForm as $remain) {
+                // Set the timezone to Kuala Lumpur
+                $kl_timezone = 'Asia/Kuala_Lumpur';
+            
+                // Get today's date in Kuala Lumpur timezone
+                $today_date = Carbon::now($kl_timezone)->startOfDay(); // Consider only the date, not the time
+                $expiredDate = Carbon::parse($remain->dueDate)->startOfDay(); // Consider only the date, not the time
+                $diffInDays = $today_date->diffInDays($expiredDate, false); // Set the "float" parameter to false
+            
+                $remainDate[] = [
+                    'diffInDays' => $diffInDays
+                ];
+            }
         return view('customer.displayCustomer', compact('customer','repairForm','remainDate'));
     }
 

@@ -75,13 +75,10 @@ class serviceController extends Controller
     }
     public function deleteService(Request $request, $id)
     {
-        // find proposal id
-        $service = Service::find($id);
+        if ($request->ajax()) {
 
-        // delete the record from the database
-        DB::delete('DELETE FROM service WHERE id = ?', [$id]);
-
-        echo "Record deleted successfully.<br/>";
-        return redirect()->back()->with('message', 'Service Deleted Successfully');
+            Service::where('id', '=', $id)->delete();
+            return response()->json(array('success' => true));
+        }
     }
 }

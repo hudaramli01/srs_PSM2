@@ -10,6 +10,7 @@ use App\Models\Service;
 use App\Models\Product;
 use App\Models\User;
 use App\Models\Customer;
+use Carbon\CarbonTimeZone;
 use Carbon\Carbon;
 
     class ticketController extends Controller
@@ -36,16 +37,17 @@ use Carbon\Carbon;
             foreach ($repairForm as $remain) {
                 // Set the timezone to Kuala Lumpur
                 $kl_timezone = 'Asia/Kuala_Lumpur';
-
+            
                 // Get today's date in Kuala Lumpur timezone
-                $today_date = Carbon::now($kl_timezone);
-                $expiredDate = Carbon::parse($remain->dueDate);
-                $diffInDays = $today_date->diffInDays($expiredDate);
+                $today_date = Carbon::now($kl_timezone)->startOfDay(); // Consider only the date, not the time
+                $expiredDate = Carbon::parse($remain->dueDate)->startOfDay(); // Consider only the date, not the time
+                $diffInDays = $today_date->diffInDays($expiredDate, false); // Set the "float" parameter to false
             
                 $remainDate[] = [
-                    'diffInDays' => $diffInDays 
+                    'diffInDays' => $diffInDays
                 ];
             }
+             
 
 
             return view('ticket.listOfTicket', compact('repairForm','remainDate','category'));
@@ -65,21 +67,21 @@ use Carbon\Carbon;
 
             ->get();//looping
 
-        $remainDate = [];
+            $remainDate = [];
 
-        foreach ($repairForm as $remain) {
-            // Set the timezone to Kuala Lumpur
-            $kl_timezone = 'Asia/Kuala_Lumpur';
-
-            // Get today's date in Kuala Lumpur timezone
-            $today_date = Carbon::now($kl_timezone);
-            $expiredDate = Carbon::parse($remain->dueDate);
-            $diffInDays = $today_date->diffInDays($expiredDate);
-
-            $remainDate[] = [
-                'diffInDays' => $diffInDays
-            ];
-        }
+            foreach ($repairForm as $remain) {
+                // Set the timezone to Kuala Lumpur
+                $kl_timezone = 'Asia/Kuala_Lumpur';
+            
+                // Get today's date in Kuala Lumpur timezone
+                $today_date = Carbon::now($kl_timezone)->startOfDay(); // Consider only the date, not the time
+                $expiredDate = Carbon::parse($remain->dueDate)->startOfDay(); // Consider only the date, not the time
+                $diffInDays = $today_date->diffInDays($expiredDate, false); // Set the "float" parameter to false
+            
+                $remainDate[] = [
+                    'diffInDays' => $diffInDays
+                ];
+            }
 
             return view('ticket.listOfTicket', compact('repairForm', 'remainDate', 'category'));
         }
@@ -206,6 +208,7 @@ use Carbon\Carbon;
     
         $repairForm = DB::table('form')
             ->join('customer', 'customer.id', '=', 'form.customerID')
+            ->join('users', 'users.id', '=', 'form.managedBy')
             ->where('form.id', '=', $id)
             ->select(
                 'form.id as formID',
@@ -219,6 +222,7 @@ use Carbon\Carbon;
                 'form.status as formStatus',
                 'customer.id as custID',
                 'customer.fullname',
+                'users.name',
             )
             ->first();
 
@@ -247,6 +251,7 @@ public function displayEdit(Request $request, $id)
     ->join('solution', 'solution.id', '=', 'form.probType')
     ->join('service', 'service.id', '=', 'form.solution')
     ->join('product', 'product.id', '=', 'form.product')
+    ->join('users', 'users.id', '=', 'form.managedBy')
     ->where('form.id', '=', $id)
     ->select(
         'form.id as formID',
@@ -263,6 +268,7 @@ public function displayEdit(Request $request, $id)
         'solution.solutionName',
         'service.serviceName',
         'product.productName',
+        'users.name',
         
     )
     ->first();

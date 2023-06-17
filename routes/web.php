@@ -83,7 +83,8 @@ Route::post('/Product', [App\Http\Controllers\productController::class, 'insertP
 Route::get('/DisplayProduct/{id}', [App\Http\Controllers\productController::class, 'displayProduct'])->name('displayProduct');
 Route::get('/EditProduct/{id}', [App\Http\Controllers\productController::class, 'editProduct'])->name('editProduct');
 Route::put('/UpdateProduct/{id}', [App\Http\Controllers\productController::class, 'UpdateProduct'])->name('UpdateProduct');
-Route::get('/DeleteProduct/{id}', [App\Http\Controllers\productController::class, 'deleteProduct'])->name('deleteProduct');
+Route::delete('/DeleteProduct/{id}', [App\Http\Controllers\productController::class, 'deleteProduct'])->name('deleteProduct');
+
 
 
 Route::get('/ListOfSolution', [App\Http\Controllers\solutionController::class, 'listSolution'])->name('listOfSolution');

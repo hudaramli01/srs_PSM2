@@ -72,8 +72,7 @@
             <div class="container1">
                 <div class="row">
                     <div class="col-6">
-                        <table>
-
+                        <table width="100%">
                             <tr>
                                 <th class="name1">Customer Name</th>
                                 <td>
@@ -106,8 +105,9 @@
                             </tr>
                             <tr>
                                 <th class="name1">Managed By</th>
-                                <td><input type="text" name="password" class="form-control" placeholder="Password"
-                                        value="{{ $repairForm->managedBy }}" readonly></td>
+                                <td><input type="text" name="password" class="form-control" placeholder="Managed By"
+                                        name="managedBy" value="{{ $repairForm->name }}" readonly>
+                                <td>
                             </tr>
                         </table>
 
@@ -136,8 +136,8 @@
 
                     <div class="form-group col-md-12">
                         <label for="Problem">Problem Type</label>
-                        <select class="form-control" name="solution" id="solution">
-                        <option value="" readonly>Please Select</option>
+                        <select class="form-control" name="solution" id="solution" required>
+                            <option value="" readonly>Please Select</option>
                             @foreach($solution as $data)
                             <option value="{{$data->id}}">{{$data->solutionName}}</option>
                             @endforeach
@@ -151,8 +151,8 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="Problelm">Solution</label>
-                        <select class="form-control" name="service" id="service">
-                        <option value="">Please Select</option>
+                        <select class="form-control" name="service" id="service" required>
+                            <option value="" readonly>Please Select</option>
                             @foreach($service as $data)
                             <option value="{{$data->id}}">{{$data->serviceName}}</option>
                             @endforeach
@@ -165,11 +165,13 @@
             <div class="container4">
                 <div class="row">
                     <div class="form-group col-md-12">
-                        <label for="Product">Product</label>
-                        <select class="form-control" name="productName" id="productName">
-                        <option value="">Please Select</option>
+                        <label for="Product">Stock</label>
+                        <select class="form-control" name="productName" id="productName" required>
+                            <option value="" readonly>Please Select</option>
                             @foreach($product as $data)
-                            <option value="{{$data->id}}">{{$data->productName}}</option>
+                            <option value="{{$data->id}}" @if($data->quantity === 0) disabled @endif>
+                                {{$data->productName}} @if($data->quantity === 0) (Out of Stock) @endif
+                            </option>
                             @endforeach
                         </select>
                     </div>
@@ -181,7 +183,7 @@
                 <div class="row">
                     <div class="form-group col-md-12">
                         <label for="Product">Due Date</label>
-                        <input type="date" class="form-control" name="dueDate" id="txtDate" value="">
+                        <input type="date" class="form-control" name="dueDate" id="dueDate" value="" required>
                     </div>
                 </div>
             </div>
