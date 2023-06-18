@@ -83,10 +83,13 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($customerList As $key=>$data)
                         <tr id="row{{$data->id}}">
 
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->fullname}}</td>
                             <td>{{$data->phoneNumber}}</td>
                             <td>{{$data->address}}</td>
@@ -96,6 +99,9 @@ $(document).ready(function() {
                                     href="{{ route('displayCustomer', $data->id)}}">Info</a>
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
                     </tbody>
                 </table>

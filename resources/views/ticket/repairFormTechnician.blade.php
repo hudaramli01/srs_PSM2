@@ -189,7 +189,7 @@
             </div>
             <br>
             <div>
-                <button type="submit" class="btn btn-info" id="updateStatus">Update</button>
+                <button type="submit" class="btn btn-info" id="updateStatus" style="float: right;">Update</button>
             </div>
         </form>
 

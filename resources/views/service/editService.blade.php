@@ -14,7 +14,8 @@
 <div class="card">
     <div class="card-body">
         <!-- form add waste -->
-        <form method="POST" action="{{ route('UpdateService',  $service->id) }}" enctype="multipart/form-data" id="service">
+        <form method="POST" action="{{ route('UpdateService',  $service->id) }}" enctype="multipart/form-data"
+            id="service">
             @csrf
             @method('PUT')
             <div class="row">
@@ -33,7 +34,8 @@
                         <div class="col">
                             <div class="col">
                                 <label>Description</label>
-                                <textarea name="desc" class="form-control" placeholder="Description" required>{{$service->desc}}</textarea>
+                                <textarea name="desc" class="form-control" placeholder="Description"
+                                    required>{{$service->desc}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -71,11 +73,8 @@
                     </div>
                     <br>
                 </div>
-
             </div>
-            <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
             <input type="submit" name="submitService" class="btn btn-primary" id="service" style="float: right;">
-
         </form>
     </div>
 

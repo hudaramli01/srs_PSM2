@@ -90,9 +90,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($repairForm As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
                             <td>
@@ -148,6 +151,9 @@ $(document).ready(function() {
                                 @endif
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
                     </tbody>
                 </table>
@@ -168,9 +174,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($repairForm As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->receivedDate}}</td>
                             <td>{{$data->dueDate}}</td>
                             <td>
@@ -226,6 +235,9 @@ $(document).ready(function() {
                                 @endif
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
                     </tbody>
                 </table>

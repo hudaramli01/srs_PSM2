@@ -86,9 +86,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($productList As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{ $counter}}</td>
                             <td>{{$data->productName}}</td>
                             <td>{{$data->quantity}}</td>
                             <td>RM {{ number_format($data->price, 2) }}</td>
@@ -110,7 +113,11 @@ $(document).ready(function() {
                                     href="{{ route('displayProduct', $data->id)}}">Info</a>
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
+                        
                     </tbody>
                 </table>
                 @elseif(auth()->user()->category == "Internship Student")
@@ -126,6 +133,47 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
+                        @foreach($productList As $key=>$data)
+                        <tr>
+                            <td>{{$counter}}</td>
+                            <td>{{$data->productName}}</td>
+                            <td>{{$data->quantity}}</td>
+                            <td>RM {{ number_format($data->price, 2) }}</td>
+                            @if ($data->quantity == 0)
+                            <td style="color: red">unavailable</td>
+                            @else
+                            <td style="color: green">{{$data->status}}</td>
+                            @endif
+                            <td>
+                                <a type="button" class="btn btn-info"
+                                    href="{{ route('displayProduct', $data->id)}}">Info</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                        @php
+                        $counter++;
+                        @endphp
+                    </tbody>
+                </table>
+                @elseif(auth()->user()->category == "Technician")
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th width=5%>ID</th>
+                            <th width=60%>Stock Name</th>
+                            <th width=10%>Quantity</th>
+                            <th width=10%>Price</th>
+                            <th width=10%>Status</th>
+                            <th width=5%>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($productList As $key=>$data)
                         <tr>
                             <td>{{$data->id}}</td>
@@ -143,6 +191,9 @@ $(document).ready(function() {
                             </td>
                         </tr>
                         @endforeach
+                        @php
+                        $counter++;
+                        @endphp
                     </tbody>
                 </table>
                 @endif

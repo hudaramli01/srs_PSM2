@@ -40,9 +40,12 @@ $(document).ready(function() {
                 </tr>
             </thead>
             <tbody>
+                @php
+                $counter = 1;
+                @endphp
                 @foreach($profile as $data)
                 <tr>
-                    <td>{{$data->id}}</td>
+                    <td>{{$counter}}</td>
                     <td>{{$data->name}}</td>
                     <td>{{$data->category}}</td>
                     <td>
@@ -50,10 +53,14 @@ $(document).ready(function() {
                             <a type="button" class="btn btn-danger" style="color:aliceblue" onclick="deleteItem(this)"
                                 data-id="{{ $data->id }}" data-name="{{ $data->name }}">Delete</a>
                             <a type="button" class="btn btn-info" href="{{route('displayStaff', $data->id)}}">Info</a>
-                            <a type="button" class="btn btn-warning" href="{{ route('getEmail', $data->id) }}"><b>Email</b></a>
+                            <a type="button" class="btn btn-warning"
+                                href="{{ route('getEmail', $data->id) }}"><b>Email</b></a>
                         </div>
                     </td>
                 </tr>
+                @php
+                        $counter++;
+                        @endphp
                 @endforeach
             </tbody>
         </table>

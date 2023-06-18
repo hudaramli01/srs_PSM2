@@ -89,18 +89,29 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+
+                        @php
+                        $counter = 1;
+                        @endphp
+
                         @foreach($solutionList As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->solutionName}}</td>
                             <td>
-                            <button class="btn btn-danger" type="button" onclick="deleteItem(this)"
+                                <button class="btn btn-danger" type="button" onclick="deleteItem(this)"
                                     data-id="{{ $data->id }}" data-name="{{ $data->solutionName }}">Delete</button>
                                 <a type="button" class="btn btn-info"
                                     href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
                         </tr>
+
+                        @php
+                        $counter++;
+                        @endphp
+
                         @endforeach
+
                     <tbody>
                     </tbody>
                 </table>
@@ -114,9 +125,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($solutionList As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->solutionName}}</td>
                             <td>
 
@@ -124,6 +138,10 @@ $(document).ready(function() {
                                     href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
+
                         @endforeach
                     <tbody>
                     </tbody>

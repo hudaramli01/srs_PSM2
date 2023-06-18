@@ -86,7 +86,7 @@
 
                                 <tr>
                                     <th class="name1">Received Date</th>
-                                    <td><input type="date" name="repairFormDate" class="form-control" id="txtDate"
+                                    <td><input type="date" name="receivedDate" class="form-control" id="txtDate"
                                             value="{{$repairForm->receivedDate}}" readonly>
                                     </td>
                                 </tr>
@@ -204,7 +204,7 @@
                 </div>
                 <br>
                 <div>
-                    <button type="submit" class="btn btn-info" id="updateStatus">Update</button>
+                    <button type="submit" class="btn btn-info" id="updateStatus" style="float: right;">Update</button>
                 </div>
             </form>
         </div>

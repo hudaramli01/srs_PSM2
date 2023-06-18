@@ -11,8 +11,9 @@ class solutionController extends Controller
     public function listSolution()
     {
         $solutionList = DB::table('solution')
-            ->orderBy('id', 'desc')
-            ->get();
+        ->orderBy('id', 'desc')
+        ->get();
+
 
         return view('solution.listOfSolution', compact('solutionList'));
     }
@@ -66,7 +67,7 @@ class solutionController extends Controller
         // display message box in the same page
         return redirect()->back()->with('message', 'Problem Updated Successfully');
     }
-    public function DeleteService(Request $request, $id)
+    public function deleteSolution(Request $request, $id)
     {
         if ($request->ajax()) {
 

@@ -89,9 +89,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                        @php
+                        $counter = 1;
+                        @endphp
                         @foreach($serviceList As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->serviceName}}</td>
                             <td>{{$data->price}}</td>
                             @if ($data->status == 'available')
@@ -110,6 +113,9 @@ $(document).ready(function() {
                                     href="{{ route('displayService', $data->id)}}">Info</a>
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
                     <tbody>
                     </tbody>
@@ -127,9 +133,12 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
+                    @php
+                        $counter = 1;
+                        @endphp
                         @foreach($serviceList As $key=>$data)
                         <tr>
-                            <td>{{$data->id}}</td>
+                            <td>{{$counter}}</td>
                             <td>{{$data->serviceName}}</td>
                             <td>{{$data->price}}</td>
                             @if ($data->status == 'available')
@@ -146,6 +155,9 @@ $(document).ready(function() {
                                     href="{{ route('displayService', $data->id)}}">Info</a>
                             </td>
                         </tr>
+                        @php
+                        $counter++;
+                        @endphp
                         @endforeach
                     <tbody>
                     </tbody>

@@ -63,6 +63,20 @@
                             <span>Solution</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('stdCalendar*') ? 'active' : '' }}"
+                            href="{{ route('stdCalendar') }}">
+                            <i class="material-icons" style="color:orange">calendar_today</i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('listOfProduct*') ? 'active' : '' }}"
+                            href="{{ route('listOfProduct') }}">
+                            <i class="material-icons" style="color:orange">inventory_2</i>
+                            <span>Stock</span>
+                        </a>
+                    </li>
 
                     @endif
 
