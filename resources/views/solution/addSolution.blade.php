@@ -42,7 +42,7 @@
 
             </div>
             <input type="submit" name="submitSolution" class="btn btn-primary" id="solution" style="float: right;">
-
+            <button class="btn btn-primary" onclick="window.history.back()">Back</button>
         </form>
     </div>
 

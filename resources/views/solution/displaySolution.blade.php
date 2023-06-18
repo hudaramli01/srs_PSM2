@@ -40,6 +40,7 @@
             </div>
 
         </div>
+        <button class="btn btn-primary" onclick="window.history.back()">Back</button>
         <a class="btn btn-primary" id="solution" style="float: right;"
             href="{{ route('editSolution', $solution->id) }}">Edit</a>
 
@@ -70,7 +71,7 @@
             </div>
 
         </div>
-        <a href="{{ url()->previous() }}" class="btn btn-primary">Back</a>
+        <button class="btn btn-primary" onclick="window.history.back()">Back</button>
 
         </form>
         @endif

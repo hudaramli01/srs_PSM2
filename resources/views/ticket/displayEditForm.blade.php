@@ -24,7 +24,8 @@
             padding: 5px;
             border-color: grey;
             resize: none;
-            font-size: 14px;
+            font-size: 16px;
+            color: black;
 
         }
 
@@ -35,8 +36,9 @@
             padding: 5px;
             border-color: grey;
             resize: none;
-            font-size: 14px;
+            font-size: 18px;
             width: 15%;
+            color: black;
 
         }
 
@@ -55,6 +57,7 @@
             border-color: grey;
             padding: 10px;
             border: solid 1px solid blue;
+            color: black;
         }
 
         .margin-right {
@@ -175,8 +178,7 @@
                 <tr>
                     <td>
                         <input id="w3review" name="w3review" rows="10" cols="50" type="textarea" name="payment"
-                            class="form-control" placeholder="Problem Description" value="{{$repairForm->payment}}"
-                            readonly></input>
+                            class="form-control" placeholder="Notes" value="{{$repairForm->payment}}" readonly></input>
                     </td>
                 </tr>
             </div>
@@ -232,9 +234,55 @@
                     </td>
                 </tr>
             </div>
+            <br>
+            <div style="float: right;">
+                <button type="button" id="printBtn" class="btn btn-dark" >Print</button>
+            </div>
             @endif
         </div>
     </div>
+    
+    <script>
+  document.getElementById("printBtn").addEventListener("click", function() {
+    var cardContent = document.querySelector(".card-body").outerHTML;
+
+    // Open a new window
+    var win = window.open("", "_blank");
+
+    // Write the card content to the new window
+    win.document.write("<html><head><title>Invoice SRS</title></head><body>" + cardContent + "</body></html>");
+
+    // Add CSS styles for A4 size
+    win.document.write('<style>@page { size: A4; }</style>');
+    win.document.write('<style>body { margin: 0; }</style>');
+
+    // Add CSS styles
+    var linkTags = document.getElementsByTagName("link");
+    for (var i = 0; i < linkTags.length; i++) {
+      var linkTag = linkTags[i].cloneNode(true);
+      win.document.head.appendChild(linkTag);
+    }
+
+    // Add inline styles
+    var styleTags = document.getElementsByTagName("style");
+    for (var j = 0; j < styleTags.length; j++) {
+      var styleTag = styleTags[j].cloneNode(true);
+      win.document.head.appendChild(styleTag);
+    }
+
+    // Hide buttons in the new window
+    win.document.getElementById("cancel").style.display = "none";
+    win.document.getElementById("printBtn").style.display = "none";
+
+    // Print the window content
+    win.print();
+  });
+</script>
+
+
+
+
+
     <script type="text/javascript" src='https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.3.min.js'></script>
     <script type="text/javascript"
         src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.0.3/js/bootstrap.min.js'>

@@ -12,7 +12,7 @@ class customerController extends Controller
     public function listCustomer()
     {
         $customerList = DB::table('customer')
-            ->orderBy('id', 'desc')
+            ->orderBy('id', 'asc')
             ->get();
 
         return view('customer.listOfCustomer', compact('customerList'));

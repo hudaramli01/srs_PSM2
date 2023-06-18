@@ -45,7 +45,6 @@
 
             </div>
             <input type="submit" name="submitSolution" class="btn btn-primary" id="solution" style="float: right;">
-
         </form>
     </div>
 

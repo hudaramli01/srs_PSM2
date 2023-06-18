@@ -144,8 +144,14 @@ $(document).ready(function() {
                             <td>RM {{ number_format($data->price, 2) }}</td>
                             @if ($data->quantity == 0)
                             <td style="color: red">unavailable</td>
-                            @else
-                            <td style="color: green">{{$data->status}}</td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{$data->status}}
+                            </td>
+                            @elseif ($data->status == 'available')
+                            <td style="color: green">
+                                {{$data->status}}
+                            </td>
                             @endif
                             <td>
                                 <a type="button" class="btn btn-info"
@@ -182,8 +188,14 @@ $(document).ready(function() {
                             <td>RM {{ number_format($data->price, 2) }}</td>
                             @if ($data->quantity == 0)
                             <td style="color: red">unavailable</td>
-                            @else
-                            <td style="color: green">{{$data->status}}</td>
+                            @elseif ($data->status == 'unavailable')
+                            <td style="color: red">
+                                {{$data->status}}
+                            </td>
+                            @elseif ($data->status == 'available')
+                            <td style="color: green">
+                                {{$data->status}}
+                            </td>
                             @endif
                             <td>
                                 <a type="button" class="btn btn-info"

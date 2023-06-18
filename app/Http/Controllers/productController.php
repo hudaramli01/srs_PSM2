@@ -10,8 +10,8 @@ class productController extends Controller
     public function listProduct()
     {
         $productList = DB::table('product')
-            ->orderBy('id', 'desc')
-            ->get();
+        ->orderBy('id', 'asc')
+        ->get();
         return view('product.listOfProduct', compact('productList'));
     }
     public function newProduct()
