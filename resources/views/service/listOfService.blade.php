@@ -217,7 +217,7 @@ function deleteItem(e) {
 
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'User account has been deleted.',
+                                'Solution has been deleted.',
                                 "success"
                             );
                         } else {

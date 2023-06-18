@@ -137,6 +137,7 @@ use Carbon\Carbon;
         $repairForm->probType = $request->input('solution');
         $repairForm->solution = $request->input('service');
         $repairForm->product = $request->input('productName');
+        $repairForm->payment = $request->input('payment');
         $repairForm->dueDate = $request->input('dueDate');
         $repairForm->status = 'Reviewed';
        
@@ -184,21 +185,6 @@ use Carbon\Carbon;
 
     }
 
-    public function rejectForm($id)
-    {
-        $repairForm = RepairForm::find($id);
-    
-        if (!$repairForm) {
-            // Handle the case where the repair form is not found
-            return redirect()->back()->with('error', 'Repair Form not found');
-        }
-    
-        $repairForm->status = 'Rejected';
-        $repairForm->save();
-    
-        return redirect()->back()->with('message', 'Repair Form status changed to Rejected');
-    }
-
     public function displayForm($id) {
 
         
@@ -219,14 +205,14 @@ use Carbon\Carbon;
                 'form.password',
                 'form.probDesc',
                 'form.managedBy',
+                'form.payment',
                 'form.status as formStatus',
                 'customer.id as custID',
                 'customer.fullname',
+                'customer.phoneNumber',
                 'users.name',
             )
             ->first();
-
-            
 
     
         return view('ticket.repairFormTechnician', compact('solution', 'service', 'product', 'repairForm'));
@@ -262,9 +248,11 @@ public function displayEdit(Request $request, $id)
         'form.password',
         'form.probDesc',
         'form.managedBy',
+        'form.payment',
         'form.status as formStatus',
         'customer.id as custID',
         'customer.fullname',
+        'customer.phoneNumber',
         'solution.solutionName',
         'service.serviceName',
         'product.productName',

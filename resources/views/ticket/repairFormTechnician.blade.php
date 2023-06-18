@@ -48,6 +48,7 @@
     .container2,
     .container3,
     .container4,
+    .container6,
     .container5 {
         border-radius: 10px;
         border-style: solid;
@@ -113,6 +114,7 @@
 
                     </div>
                     <div class="col-6">
+
                         <table>
                             <tr>
                                 <th class="name1" width="20%">Problem Description</th>
@@ -129,11 +131,11 @@
             <br>
 
 
-
+            @if( auth()->user()->category== "Technician" ||
+            auth()->user()->category== "Internship Student")
             <!-- -container 2- -->
             <div class="container2">
                 <div class="row">
-
                     <div class="form-group col-md-12">
                         <label for="Problem">Problem Type</label>
                         <select class="form-control" name="solution" id="solution" required>
@@ -169,19 +171,33 @@
                         <select class="form-control" name="productName" id="productName" required>
                             <option value="" readonly>Please Select</option>
                             @foreach($product as $data)
-                    <option value="{{$data->id}}" @if($data->quantity === 0) disabled @endif>
-                        {{$data->productName}} @if($data->quantity === 0) (Out of Stock) @endif
-                    </option>
-                @endforeach
+                            <option value="{{$data->id}}" @if($data->quantity === 0) disabled @endif>
+                                {{$data->productName}} @if($data->quantity === 0) (Out of Stock) @endif
+                            </option>
+                            @endforeach
                         </select>
                     </div>
                 </div>
             </div>
             <br>
-            <!---container 5--->
-            <div class="container5">
+             <!---container 5--->
+             <div class="container5">
                 <div class="row">
                     <div class="form-group col-md-12">
+                        <label for="Notes">Notes</label>
+                        <td><textarea id="w3review" rows="10" cols="50" type="textarea"
+                                        name="payment" class="form-control" placeholder="Notes"
+                                        required></textarea></td>
+                    </div>
+                </div>
+            </div>
+            <br>
+
+            <br>
+             <!---container 6--->
+             <div class="container6">
+                <div class="row">
+                <div class="form-group col-md-12">
                         <label for="Product">Due Date</label>
                         <input type="date" class="form-control" name="dueDate" id="dueDate" value="" required>
                     </div>
@@ -191,6 +207,7 @@
             <div>
                 <button type="submit" class="btn btn-info" id="updateStatus" style="float: right;">Update</button>
             </div>
+            @endif
         </form>
 
     </div>

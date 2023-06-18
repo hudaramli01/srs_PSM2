@@ -117,7 +117,7 @@ $(document).ready(function() {
                         $counter++;
                         @endphp
                         @endforeach
-                        
+
                     </tbody>
                 </table>
                 @elseif(auth()->user()->category == "Internship Student")
@@ -254,7 +254,7 @@ function deleteItem(e) {
 
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'User account has been deleted.',
+                                'Product has been deleted.',
                                 "success"
                             );
                         } else {

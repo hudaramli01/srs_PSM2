@@ -264,23 +264,23 @@ google.charts.load('current', {
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-    var techPending = <?php echo $techPending; ?>;
-    var techReviewed = <?php echo $techReviewed; ?>;
-    var techRejected = <?php echo $techRejected; ?>;
-    var techProceed = <?php echo $techProceed; ?>;
-    var techCompleted = <?php echo $techCompleted; ?>;
+    var countPending = <?php echo $countPending; ?>;
+    var countReviewed = <?php echo $countReviewed; ?>;
+    var countRejected = <?php echo $countRejected; ?>;
+    var countProceed = <?php echo $countProceed; ?>;
+    var countCompleted = <?php echo $countCompleted; ?>;
 
     var data = google.visualization.arrayToDataTable([
         ['asasas', 'Hours per Day'],
-        ['Pending', techPending],
-        ['Reviewed', techReviewed],
-        ['Rejected', techRejected],
-        ['Proceed', techProceed],
-        ['Completed', techCompleted]
+        ['Pending', countPending],
+        ['Reviewed', countReviewed],
+        ['Rejected', countRejected],
+        ['Proceed', countProceed],
+        ['Completed', countCompleted]
     ]);
 
     var options = {
-        title: 'My E-Jobsheet',
+        title: 'Total of SRS E-Jobsheet',
         width: 450, // Specify the desired width in pixels
         height: 300 // Specify the desired height in pixels
     };
@@ -303,15 +303,15 @@ function drawChart() {
 
         var data = google.visualization.arrayToDataTable([
             ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
-            [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
-                <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
+            [currentDate, <?php echo $techPending; ?>, <?php echo $techReviewed; ?>,
+                <?php echo $techRejected; ?>, <?php echo $techProceed; ?>, <?php echo $techCompleted; ?>
             ]
         ]);
 
         var options = {
             chart: {
-                title: 'Total of E-Jobshet and Status',
-                subtitle: 'Total of Job-Sheet untill ' + currentDate,
+                title: 'Total of My E-Jobshet and Status',
+                subtitle: 'Total of My Job-Sheet untill ' + currentDate,
             }
         };
 

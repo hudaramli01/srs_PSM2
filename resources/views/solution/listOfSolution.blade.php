@@ -70,9 +70,8 @@ $(document).ready(function() {
                     <i class="fa fa-cog"></i>&nbsp; -</a>
             </div>
             @endif
-
+            
             @endif
-
         </div>
     </div>
 
@@ -89,11 +88,9 @@ $(document).ready(function() {
                         </tr>
                     </thead>
                     <tbody>
-
                         @php
                         $counter = 1;
                         @endphp
-
                         @foreach($solutionList As $key=>$data)
                         <tr>
                             <td>{{$counter}}</td>
@@ -105,13 +102,10 @@ $(document).ready(function() {
                                     href="{{ route('displaySolution', $data->id)}}">Info</a>
                             </td>
                         </tr>
-
                         @php
                         $counter++;
                         @endphp
-
                         @endforeach
-
                     <tbody>
                     </tbody>
                 </table>
@@ -200,7 +194,7 @@ function deleteItem(e) {
 
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'User account has been deleted.',
+                                'Problem Type has been deleted.',
                                 "success"
                             );
                         } else {

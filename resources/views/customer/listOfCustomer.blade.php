@@ -151,7 +151,7 @@ function deleteItem(e) {
                         if (data.success) {
                             swalWithBootstrapButtons.fire(
                                 'Deleted!',
-                                'User account has been deleted.',
+                                'Customer has been deleted.',
                                 "success"
                             );
 

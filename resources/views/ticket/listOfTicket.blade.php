@@ -167,10 +167,10 @@ $(document).ready(function() {
                             <th width=5%>ID</th>
                             <th width=15%>Received Date</th>
                             <th width=15%>Due Date</th>
-                            <th width=5%>Time Remaining</th>
+                            <th width=15%>Time Remaining</th>
                             <th width=10%>Status</th>
-                            <th width=30%>Managed By</th>
-                            <th width=20%>Action</th>
+                            <th width=35%>Managed By</th>
+                            <th width=5%>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -214,26 +214,26 @@ $(document).ready(function() {
                             @endif
                             <td>{{$data->name}}</td>
                             <td>
-                                <a type="button" class="btn btn-danger" style="color:aliceblue"
-                                    onclick="deleteItem(this)" data-id="{{ $data->id }}">Delete</a>
+                               
 
                                 @if ($data->status == 'Pending')
-                                <a type="button" class="btn btn-info"
-                                    href="{{ route('displayForm', $data->id) }}">Info</a>
+                                <a type="button" class="btn btn-info" href="{{ route('displayForm', $data->id ) }}"
+                                    readonly>Info</a>
                                 @elseif ($data->status == 'Reviewed')
-                                <a type="button" class="btn btn-info"
-                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                <a type="button" class="btn btn-info" href="{{ route('displayEdit', $data->id) }}"
+                                    disabled>Info</a>
                                 @elseif ($data->status == 'Rejected')
-                                <a type="button" class="btn btn-info"
-                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                <a type="button" class="btn btn-info" href="{{ route('displayEdit', $data->id) }}"
+                                    disabled>Info</a>
                                 @elseif ($data->status == 'Proceed')
-                                <a type="button" class="btn btn-info"
-                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                <a type="button" class="btn btn-info" href="{{ route('displayEdit', $data->id) }}"
+                                    disabled>Info</a>
                                 @elseif ($data->status == 'Completed')
-                                <a type="button" class="btn btn-info"
-                                    href="{{ route('displayEdit', $data->id) }}">Info</a>
+                                <a type="button" class="btn btn-info" href="{{ route('displayEdit', $data->id) }}"
+                                    disabled>Info</a>
                                 @endif
                             </td>
+
                         </tr>
                         @php
                         $counter++;

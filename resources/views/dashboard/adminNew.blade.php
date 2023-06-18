@@ -222,22 +222,20 @@
     <br>
 
     <div class="row">
-        <div class="col-sm-8">
+        <div class="col-sm-7">
             <div class="card">
                 <div class="card-body">
                     <div class="row-sm-16">
-                        <div id="columnchart_material" style="width: 600px; height: 400px;"></div>
+                        <div id="columnchart_material" style="width: 500px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-5">
             <div class="card">
                 <div class="card-body">
                     <div class="row-sm-16">
-                        @foreach ($products as $product)
-                        <img src="{{ asset('storage/' . $product->picture) }}" alt="Product Image">
-                        @endforeach
+                    <div id="piechart" style="width: 400px; height: 400px;"></div>
                     </div>
                 </div>
             </div>
@@ -267,7 +265,7 @@ function drawChart() {
     var currentDate = new Date().toLocaleDateString();
 
     var data = google.visualization.arrayToDataTable([
-        ['Stock Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
+        ['E-Jobsheet Status', 'Pending', 'Reviewed', 'Rejected', 'Proceed', 'Completed'],
         [currentDate, <?php echo $countPending; ?>, <?php echo $countReviewed; ?>,
             <?php echo $countRejected; ?>, <?php echo $countProceed; ?>, <?php echo $countCompleted; ?>
         ]
@@ -276,7 +274,7 @@ function drawChart() {
     var options = {
         chart: {
             title: 'Total of E-Jobshet and Status',
-            subtitle: 'Total of Job-Sheet untill ' + currentDate,
+            subtitle: 'Total of E-Jobsheet untill ' + currentDate,
         }
     };
 
@@ -285,6 +283,37 @@ function drawChart() {
     chart.draw(data, google.charts.Bar.convertOptions(options));
 }
 </script>
+
+<script type="text/javascript">
+google.charts.load('current', {
+    'packages': ['corechart']
+});
+google.charts.setOnLoadCallback(drawChart);
+
+function drawChart() {
+    var proAva = <?php echo $proAva; ?>;
+    var proUna = <?php echo $proUna; ?>;
+
+    var data = google.visualization.arrayToDataTable([
+        ['Status', 'Count'],
+        ['Available', proAva],
+        ['Unavailable', proUna]
+    ]);
+
+    var options = {
+        title: 'Total of Stocks',
+        width: 380, // Specify the desired width in pixels
+        height: 400, // Specify the desired height in pixels
+        legend: 'bottom' // Set the legend placement to bottom
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+    chart.draw(data, options);
+}
+</script>
+
+
 
 
 @endsection

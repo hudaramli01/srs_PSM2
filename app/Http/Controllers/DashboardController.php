@@ -48,10 +48,16 @@ class DashboardController extends Controller
             ->where('status', 'completed')
             ->count();
 
-            
+            $proAva = DB::table('product')
+            ->where('status', 'available')
+            ->count();
 
+            $proUna = DB::table('product')
+            ->where('status', 'unavailable')
+            ->count();
 
-            return view('dashboard.admin', compact('countStaff', 'countRepairForm', 'countCustomer', 'countPending', 'countReviewed', 'countRejected', 'countProceed', 'countCompleted','products'));
+            return view('dashboard.adminNew', compact('countStaff', 'countRepairForm', 'countCustomer', 'countPending', 
+            'countReviewed', 'countRejected', 'countProceed', 'countCompleted','products','proAva','proUna'));
         }
         if ($category == 'Technician') {
 

@@ -50,6 +50,13 @@
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('stdCalendar*') ? 'active' : '' }}"
+                            href="{{ route('stdCalendar') }}">
+                            <i class="material-icons" style="color:orange">calendar_today</i>
+                            <span>Calendar</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {{ request()->routeIs('listOfSolution*') ? 'active' : '' }}"
                             href="{{ route('listOfSolution') }}">
                             <i class="material-icons" style="color:orange">report_problem</i>
@@ -61,13 +68,6 @@
                             href="{{ route('listOfService') }}">
                             <i class="material-icons" style="color:orange">emoji_objects</i>
                             <span>Solution</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('stdCalendar*') ? 'active' : '' }}"
-                            href="{{ route('stdCalendar') }}">
-                            <i class="material-icons" style="color:orange">calendar_today</i>
-                            <span>Calendar</span>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -78,6 +78,11 @@
                                         placeholder="Customer Name" value="{{$customer->fullname}}" readonly></td>
                             </tr>
                             <tr>
+                                <th class="name1">Phone Number</th>
+                                <td><input type="text" name="repairFormName" class="form-control"
+                                        value="{{$customer->phoneNumber}}" readonly></td>
+                            </tr>
+                            <tr>
                                 <th class="name1">Received Date</th>
                                 <td><input type="date" name="receivedDate" class="form-control" id="txtDate" required>
                                 </td>
